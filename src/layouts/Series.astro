@@ -33,7 +33,7 @@ const { headings } = await render(series);
 		</div>
 	</div>
 
-	<!-- SeriesPanel вставляется в именованный слот "sidebar" -->
+	<!-- SeriesPanel     "sidebar" -->
 	{series.id && (<SeriesPanel slot="sidebar" seriesId={series.id} />)}
 
 	<div class="md:sticky md:top-8 md:z-20 flex items-end">
@@ -105,7 +105,7 @@ const { headings } = await render(series);
 		</button>
 	</div>
 
-	<!-- Кнопка серий для мобильных экранов -->
+	<!--      -->
 	<mobile-button
 		id="toggle-panel-mobile"
 		class="size-12 flex items-center justify-center block sm:hidden fixed bottom-4 shadow-[0px_10px_25px_rgba(0,0,0,0.15)] border border-special-lighter right-4 z-50 rounded-lg bg-bgColor text-accent-base hover:text-bg-accent-base/90"
@@ -116,7 +116,7 @@ const { headings } = await render(series);
 		</span>
 	</mobile-button>
 
-	<!-- Кнопка таблицы контента для мобильных экранов -->
+	<!--       -->
 	<!--
 	<mobile-button
 		id="toggle-toc-mobile"
@@ -132,28 +132,28 @@ const { headings } = await render(series);
 
 <script>
 	const ANIMATION_DURATION = 300;
-	// Получаем элементы кнопок и панели
+	//
 	const togglePanelBtn = document.getElementById("toggle-panel");
 	const closePanelBtn = document.getElementById("close-panel");
 	const seriesPanel = document.getElementById("series-panel");
 	const togglePanelMobileBtn = document.getElementById("toggle-panel-mobile");
 
-	// Убедимся, что seriesPanel существует
+	// ,  seriesPanel
 	if (!seriesPanel) {
-		console.error("Элемент series-panel не найден");
+		console.error(" series-panel  ");
 		throw new Error("series-panel is required");
 	}
 
-	// Функция для проверки, видима ли панель
+	//   ,
 	const isPanelVisible = () => {
-		const isScreenLg = window.matchMedia("(min-width: 1024px)").matches; // Большие экраны
+		const isScreenLg = window.matchMedia("(min-width: 1024px)").matches; //
 		return (
 			(isScreenLg && seriesPanel.classList.contains("lg:block")) ||
 			(!isScreenLg && !seriesPanel.classList.contains("hidden"))
 		);
 	};
 
-	// Функция для скрытия панели
+	//
 	const hidePanel = () => {
 		seriesPanel.classList.add("opacity-0", "-translate-x-full");
 		setTimeout(() => {
@@ -162,7 +162,7 @@ const { headings } = await render(series);
 		}, ANIMATION_DURATION);
 	};
 
-	// Функция для показа панели
+	//
 	const showPanel = () => {
 		seriesPanel.classList.remove("hidden");
 		seriesPanel.classList.add("block", "lg:block");
@@ -171,49 +171,49 @@ const { headings } = await render(series);
 		}, 10);
 	};
 
-	// Общий обработчик для обеих кнопок
+	//
 	const togglePanel = () => {
 		if (isPanelVisible()) {
-			hidePanel(); // Если видима, скрываем
+			hidePanel(); //  ,
 		} else {
-			showPanel(); // Если скрыта, показываем
+			showPanel(); //  ,
 		}
 	};
 
-	// Обработчики событий для обеих кнопок
+	//
 	if (togglePanelBtn) {
 		togglePanelBtn.addEventListener("click", togglePanel);
 	} else {
-		console.error("Элемент toggle-panel не найден");
+		console.error(" toggle-panel  ");
 	}
 
 	if (togglePanelMobileBtn) {
 		togglePanelMobileBtn.addEventListener("click", togglePanel);
 	} else {
-		console.error("Элемент toggle-panel-mobile не найден");
+		console.error(" toggle-panel-mobile  ");
 	}
 
 	if (closePanelBtn) {
 		closePanelBtn.addEventListener("click", hidePanel);
 	} else {
-		console.error("Элемент close-panel не найден");
+		console.error(" close-panel  ");
 	}
 </script>
 
 <script>
-	// Получаем элементы кнопок и панели
+	//
 	const toggleTocBtn = document.getElementById('toggle-toc');
 	const closeTocBtn = document.getElementById('close-toc');
 	const tocPanel = document.getElementById('toc-panel');
 	const toggleTocMobileBtn = document.getElementById("toggle-toc-mobile");
 
-	// Проверяем наличие панели (обязательно для работы)
+	//    (  )
 	if (!tocPanel) {
-		console.error('Элемент toc-panel не найден');
+		console.error(' toc-panel  ');
 		throw new Error('toc-panel is required');
 	}
 
-	// Функция для проверки, видима ли таблица контента
+	//   ,
 	const isTocVisible = () => {
 		const isScreenMd = window.matchMedia("(min-width: 768px)").matches;
 		return (
@@ -222,59 +222,59 @@ const { headings } = await render(series);
 		);
 	};
 
-	// Функция для скрытия панели
+	//
 	const hideToc = () => {
 		tocPanel.classList.add('hidden');
 		tocPanel.classList.remove('md:block');
 	};
 
-	// Функция для показа панели
+	//
 	const showToc = () => {
 		tocPanel.classList.remove('hidden');
 		tocPanel.classList.add('md:block');
 	};
 
-	// Общий обработчик для обеих кнопок
+	//
 	const toggleToc = () => {
 		if (isTocVisible()) {
-			hideToc(); // Если видима, скрываем
+			hideToc(); //  ,
 		} else {
-			showToc(); // Если скрыта, показываем
+			showToc(); //  ,
 		}
 	};
 	
-	// Добавляем обработчик для кнопки переключения
+	//
 	if (toggleTocBtn) {
 		toggleTocBtn.addEventListener("click", toggleToc);
 	} else {
-		console.error('Элемент toggle-toc не найден');
+		console.error(' toggle-toc  ');
 	}
 
-	// Добавляем обработчик для кнопки переключения
+	//
 	if (toggleTocMobileBtn) {
 		toggleTocMobileBtn.addEventListener("click", toggleToc);
 	} else {
-		console.error('Элемент toggle-toc-mobile не найден');
+		console.error(' toggle-toc-mobile  ');
 	}
 
-	// Добавляем обработчик для кнопки закрытия
+	//
 	if (closeTocBtn) {
 		closeTocBtn.addEventListener('click', hideToc);
 	} else {
-		console.error('Элемент close-toc не найден');
+		console.error(' close-toc  ');
 	}
 </script>
 
 <script>
-  // Ждем загрузки контента
+  //
   document.addEventListener("DOMContentLoaded", () => {
     const buttonsPanel = document.getElementById("buttons-panel");
     
     if (buttonsPanel) {
       buttonsPanel.classList.add("fixed");
-      console.log("Класс 'fixed' добавлен к элементу buttons-panel.");
+      console.log(" 'fixed'    buttons-panel.");
     } else {
-      console.error("Элемент с ID 'buttons-panel' не найден.");
+      console.error("  ID 'buttons-panel'  .");
     }
   });
 </script>

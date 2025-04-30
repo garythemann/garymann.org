@@ -333,7 +333,7 @@ Yields:
 ```
 
 :::caution
-Оbserve that the XSS attack through `onclick` is present.
+bserve that the XSS attack through `onclick` is present.
 :::
 
 ### Example: supporting HTML in markdown properly
@@ -372,7 +372,7 @@ Running that code yields:
 ```
 
 :::caution
-Оbserve that the XSS attack through `onclick` is **not** present.
+bserve that the XSS attack through `onclick` is **not** present.
 :::
 
 ### Example: footnotes in languages other than English

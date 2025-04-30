@@ -1,7 +1,7 @@
 ---
 const { variant = "default", showHash = true, title } = Astro.props;
 
-// CSS-классы для вариантов стилей
+// CSS-
 const badgeClasses = {
 	base: "flex items-baseline pt-[0.075rem] drop-shadow-lg active:drop-shadow-none rounded-lg h-6 px-2 text-sm font-medium transition-colors",
 	variants: {
@@ -16,7 +16,7 @@ const badgeClasses = {
 	},
 };
 
-const variantClasses = badgeClasses.variants[variant as keyof typeof badgeClasses.variants]; // Приведение типов
+const variantClasses = badgeClasses.variants[variant as keyof typeof badgeClasses.variants]; //
 ---
 
 <div class={`${badgeClasses.base} ${variantClasses}`}>

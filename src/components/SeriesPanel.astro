@@ -8,12 +8,12 @@ const currentPath = Astro.url.pathname;
 const posts = await getCollection("post");
 const series = await getCollection("series");
 
-// Находим серию по переданному `seriesId` указанному в посте
+//     `seriesId`
 const postsSeries = series.find((s) => s.id === seriesId);
 if (!postsSeries) {
   	throw new Error(`Post(s) with Series ID '${seriesId}' not found.`);
 }
-// console.log("Post(s) Series:", postsSeries); // Debug. Логируем найденную серию
+// console.log("Post(s) Series:", postsSeries); // Debug.
 
 let seriesPosts: CollectionEntry<"post">[] = [];
 if (seriesId) {
