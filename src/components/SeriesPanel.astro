@@ -32,28 +32,28 @@ if (seriesId) {
 	
 	<div class="flex h-full flex-col px-8 pt-4 md:pt-8 w-screen md:w-72 md:min-w-72 md:max-w-72 bg-accent-base/5 border-r border-special-light">
 		<div class="flex gap-x-1">
-			<!--
-			<Icon aria-hidden="true" class="flex-shrink-0 h-8 w-6 py-1" focusable="false" name="solar:notes-line-duotone" />
-			-->
-			<h4 class="flex items-center title mb-[4.5rem]">
-				Docs Series panel
-			</h4>
-		</div>
+			<div class="flex-grow max-width">
+			</div>
+
 		<button
 			id="close-panel"
-			class="absolute top-4 right-4 md:top-8 md:right-8 h-8 w-8 flex items-center justify-center rounded-lg bg-accent-base/5 text-accent-base hover:bg-accent-base/10"
+			class="md:top-8 md:right-8 h-8 w-8 flex items-center justify-center rounded-lg bg-accent-base/5 text-accent-base hover:bg-accent-base/10"
 			aria-label="Close Series Panel"
 		>
 			<Icon class="h-6 w-6" name="hugeicons:cancel-01" />
 		</button>
+
+		</div>
 		<div class="sticky top-8">
+			<div class="uppercase flex items-center title text-sm mt-4 mb-2">
+				A series on
+			</div>
 			{postsSeries.id ? (
 				<a 
 					href={`/series/${postsSeries.id}`} 
 					aria-label={`About ${postsSeries.data.title} series`}
 					class="sticky top-4 flex h-8 w-full items-center justify-center gap-x-1 rounded-lg shadow-lg bg-accent-base font-medium text-bgColor hover:brightness-110 transition-all duration-300"
 				>
-					<Icon class="inline-block h-6 w-6 text-bgColor" name="solar:notes-bold" />
 					{postsSeries.data.title}
 				</a>
 
