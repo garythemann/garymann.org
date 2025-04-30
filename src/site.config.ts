@@ -29,8 +29,8 @@ export const menuLinks: { path: string; title: string }[] = [
 		title: "About",
 	},
 	{
-		path: "/posts/",
-		title: "Blog",
+		path: "/writing/",
+		title: "Writing",
 	},
 	{
 		path: "/notes/",
@@ -48,8 +48,8 @@ export const footerLinks: { path: string; title: string }[] = [
 		title: "About",
 	},
 	{
-		path: "/posts/",
-		title: "Blog",
+		path: "/writing/",
+		title: "Writing",
 	},
 	{
 		path: "/notes/",
