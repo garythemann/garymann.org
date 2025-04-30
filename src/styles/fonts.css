@@ -1,0 +1,151 @@
+@font-face {
+	font-family: "Default Sans";
+	font-style: normal;
+	font-weight: 900;
+	font-display: swap;
+	src: url("../assets/fonts/woff2/DefaultSans-Black.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Default Sans";
+	font-style: italic;
+	font-weight: 900;
+	font-display: swap;
+	src: url("../assets/fonts/woff2/DefaultSans-BlackItalic.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Default Sans";
+	font-style: normal;
+	font-weight: 800;
+	font-display: swap;
+	src: url("../assets/fonts/woff2/DefaultSans-ExtraBold.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Default Sans";
+	font-style: italic;
+	font-weight: 800;
+	font-display: swap;
+	src: url("../assets/fonts/woff2/DefaultSans-ExtraBoldItalic.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Default Sans";
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url("../assets/fonts/woff2/DefaultSans-Bold.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Default Sans";
+	font-style: italic;
+	font-weight: 700;
+	font-display: swap;
+	src: url("../assets/fonts/woff2/DefaultSans-BoldItalic.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Default Sans";
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+	src: url("../assets/fonts/woff2/DefaultSans-SemiBold.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Default Sans";
+	font-style: italic;
+	font-weight: 600;
+	font-display: swap;
+	src: url("../assets/fonts/woff2/DefaultSans-SemiBoldItalic.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Default Sans";
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url("../assets/fonts/woff2/DefaultSans-Medium.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Default Sans";
+	font-style: italic;
+	font-weight: 500;
+	font-display: swap;
+	src: url("../assets/fonts/woff2/DefaultSans-MediumItalic.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Default Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("../assets/fonts/woff2/DefaultSans-Regular.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Default Sans";
+	font-style: italic;
+	font-weight: 400;
+	font-display: swap;
+	src: url("../assets/fonts/woff2/DefaultSans-Italic.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Default Sans";
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+	src: url("../assets/fonts/woff2/DefaultSans-Light.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Default Sans";
+	font-style: italic;
+	font-weight: 300;
+	font-display: swap;
+	src: url("../assets/fonts/woff2/DefaultSans-LightItalic.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Default Sans";
+	font-style: normal;
+	font-weight: 200;
+	font-display: swap;
+	src: url("../assets/fonts/woff2/DefaultSans-ExtraLight.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Default Sans";
+	font-style: italic;
+	font-weight: 200;
+	font-display: swap;
+	src: url("../assets/fonts/woff2/DefaultSans-ExtraLightItalic.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Default Sans";
+	font-style: normal;
+	font-weight: 100;
+	font-display: swap;
+	src: url("../assets/fonts/woff2/DefaultSans-Thin.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Default Sans";
+	font-style: italic;
+	font-weight: 100;
+	font-display: swap;
+	src: url("../assets/fonts/woff2/DefaultSans-ThinItalic.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "CascadiaCode";
+	src: url("../assets/fonts/CascadiaCode.ttf") format("truetype");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
