@@ -1,8 +1,9 @@
 ---
 import { Image } from "astro:assets";
 import { type CollectionEntry, getCollection } from "astro:content";
-import Badge from '@/components/Badge.astro';
+import Badge from "@/components/Badge.astro";
 import FormattedDate from "@/components/FormattedDate.astro";
+import Tag from "@/components/Tag.astro";
 import { Icon } from "astro-icon/components";
 import Separator from "../Separator.astro";
 
@@ -10,10 +11,7 @@ interface Props {
 	content: CollectionEntry<"post">;
 }
 
-const {
-	content,
-
-} = Astro.props;
+const { content } = Astro.props;
 
 // console.log("data:", data); // Debug
 // console.log("headings:", content.rendered?.metadata?.headings); // Debug
@@ -24,13 +22,13 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 };
 
 const postSeries = content.data.seriesId
-    ? await getCollection("series")
-          .then(series => series.find(s => s.id === content.data.seriesId))
-          .catch(err => {
-            console.error("Failed to find series:", err);
-            return null;
-          })
-    : null;
+	? await getCollection("series")
+			.then((series) => series.find((s) => s.id === content.data.seriesId))
+			.catch((err) => {
+				console.error("Failed to find series:", err);
+				return null;
+			})
+	: null;
 ---
 
 <div class="md:sticky md:top-8 md:z-10 flex items-end">
@@ -119,23 +117,21 @@ const postSeries = content.data.seriesId
 	{/* Tags */}
 	{
 		content.data.tags?.length ? (
-			<Icon aria-hidden="true" class="flex-shrink-0 inline-block h-6 w-6 text-accent-base" focusable="false" name="solar:tag-line-duotone" />	
 			<>
 				{content.data.tags.map((tag) => (
 					<a aria-label={`View all posts with the tag: ${tag}`} href={`/tags/${tag}`}>
-						<Badge variant="accent-two" title={tag} />
+						<Tag variant="accent-two" title={tag} />
 					</a>
 				))}
 			</>
 		) : (
-			<Icon aria-hidden="true" class="flex-shrink-0 inline-block h-6 w-6 text-lightest" focusable="false" name="solar:tag-line-duotone" />
 			<span class="text-sm text-lightest">No tags</span>
 		)
 	}
 
 	{/* Series */}
 	{
-		postSeries ? (
+		postSeries && (
 			<div class="flex items-center gap-2">
 				<Icon aria-hidden="true" class="flex-shrink-0 inline-block h-6 w-6 text-accent-base" focusable="false" name="solar:notes-line-duotone" />
 				<a 
@@ -146,11 +142,6 @@ const postSeries = content.data.seriesId
 					<Badge variant="accent-base" showHash={false} title={postSeries.data.title} />
 				</a>
 			</div>	
-		) : (
-			<div class="flex items-center gap-2">
-				<Icon aria-hidden="true" class="flex-shrink-0 inline-block h-6 w-6 text-lightest" focusable="false" name="solar:notes-line-duotone" />
-				<span class="text-sm text-lightest">Not in series</span>
-			</div>
 		)
 	}
 </div>

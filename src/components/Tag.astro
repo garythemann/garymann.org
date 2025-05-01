@@ -1,0 +1,26 @@
+---
+const { variant = "default", showHash = true, title } = Astro.props;
+
+const tagClasses = {
+	base: "flex items-baseline pt-[0.075rem] rounded-lg h-6 px-2 text-sm font-medium",
+	variants: {
+		default: "bg-textColor text-bgColor",
+		accent: "text-accent",
+		"accent-base": "text-accent-base",
+		"accent-one": "text-accent-one",
+		"accent-two": "text-accent-two hover:underline",
+		muted: "bg-color-100 text-textColor hover:bg-accent-two hover:text-bgColor",
+		outline: "border border-lightest text-textColor",
+		inactive: "text-lighter bg-color-100",
+	},
+};
+
+const variantClasses =
+	tagClasses.variants[variant as keyof typeof tagClasses.variants]; //
+---
+
+<div class={`${tagClasses.base} ${variantClasses}`}>
+	{showHash && <span class="h-full">#</span>}
+	{title}
+	<slot />
+</div>
