@@ -49,6 +49,13 @@ const note = defineCollection({
 	}),
 });
 
+const article = defineCollection({
+	loader: glob({ base: "./src/content/article", pattern: "**/*.{md,mdx}" }),
+	schema: baseSchema.extend({
+		description: z.string().optional(),
+	}),
+});
+
 // Series
 const series = defineCollection({
 	loader: glob({ base: "./src/content/series", pattern: "**/*.{md,mdx}" }),
@@ -62,4 +69,4 @@ const series = defineCollection({
 // End
 
 // Series
-export const collections = { post, note, series };
+export const collections = { post, note, article, series };

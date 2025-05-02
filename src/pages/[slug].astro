@@ -1,0 +1,49 @@
+---
+import { getCollection } from "astro:content";
+
+import Backdrop from "@/components/Backdrop.astro";
+import BaseLayout from "@/layouts/Base.astro";
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+
+import { render } from "astro:content";
+
+// If you're using an adaptor in SSR mode, getStaticPaths wont work -> https://docs.astro.build/en/guides/routing/#modifying-the-slug-example-for-ssr
+export const getStaticPaths = (async () => {
+	const allArticles = await getCollection("article");
+	return allArticles.map((article) => ({
+		params: { slug: article.id },
+		props: { article },
+	}));
+}) satisfies GetStaticPaths;
+
+export type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { article } = Astro.props;
+
+const meta = {
+	description: article.data.description || "",
+	title: article.data.title,
+};
+
+const { Content } = await render(article);
+---
+
+<BaseLayout meta={meta}>
+	<Backdrop />
+
+	<div class="mt-6 flex sm:grid-cols-[auto_1fr] md:items-start gap-x-8">
+		<article class="grid flex-grow grid-cols-1 break-words pt-4" data-pagefind-body>
+			<div class="prose prose-citrus max-w-none flex-grow prose-headings:font-semibold prose-headings:text-accent-base prose-headings:before:text-accent-two">
+				<h1 
+					class="title"
+					title={article.data.title}
+					data-pagefind-body
+				>
+					{article.data.title}
+				</h1>
+
+				<Content />
+			</div>
+		</article>
+	</div>
+</BaseLayout>

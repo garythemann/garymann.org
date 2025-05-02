@@ -45,6 +45,10 @@ export const footerLinks: { path: string; title: string; icon?: string }[] = [
 	},
 	...menuLinks,
 	{
+		path: "/colophon",
+		title: "Colophon",
+	},
+	{
 		path: "https://github.com/garythemann",
 		title: "GitHub",
 		icon: "ei:sc-github",
