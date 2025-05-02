@@ -38,29 +38,20 @@ export const menuLinks: { path: string; title: string }[] = [
 	},
 ];
 
-export const footerLinks: { path: string; title: string }[] = [
+export const footerLinks: { path: string; title: string; icon?: string }[] = [
 	{
 		path: "/",
 		title: "Home",
 	},
-	{
-		path: "/about/",
-		title: "About",
-	},
-	{
-		path: "/writing/",
-		title: "Writing",
-	},
-	{
-		path: "/notes/",
-		title: "Notes",
-	},
+	...menuLinks,
 	{
 		path: "https://github.com/garythemann",
 		title: "GitHub",
+		icon: "ei:sc-github",
 	},
 	{
 		path: "https://linkedin.com/in/gzma",
 		title: "LinkedIn",
+		icon: "ei:sc-linkedin",
 	},
 ];

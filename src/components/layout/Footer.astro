@@ -1,5 +1,6 @@
 ---
 import { footerLinks, siteConfig } from "@/site.config";
+import { Icon } from "astro-icon/components";
 
 const year = new Date().getFullYear();
 ---
@@ -17,7 +18,10 @@ const year = new Date().getFullYear();
 		{
 			footerLinks.map((link) => (
 				<a class="underline-offset-2 hover:text-accent hover:underline" href={link.path}>
-					{link.title}
+					{link.icon ?
+						<Icon aria-hidden="true" class="h-6 w-6" focusable="false" name={link.icon} />
+						: link.title
+					}
 				</a>
 			))
 		}
