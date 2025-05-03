@@ -5,6 +5,7 @@ import { Icon } from "astro-icon/components";
 const year = new Date().getFullYear();
 ---
 
+
 <footer
 	class="mt-auto flex w-full flex-col items-center justify-center gap-y-2 pb-4 pt-8 text-center align-top text-accent sm:flex-row sm:justify-between sm:text-sm"
 >
@@ -13,7 +14,7 @@ const year = new Date().getFullYear();
 	</div>
 	<nav
 		aria-label="More on this site"
-		class="flex justify-between space-x-4 font-semibold text-light"
+		class="flex justify-between gap-x-2 gap-y-2 flex-wrap font-semibold text-light"
 	>
 		{
 			footerLinks.map((link) => (
