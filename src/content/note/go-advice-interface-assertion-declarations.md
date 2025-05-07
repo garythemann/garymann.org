@@ -19,12 +19,12 @@ var _ fmt.Stringer = (*Point)(nil) // ./prog.go:7:22: cannot use (*Point)(nil) (
 
 ```
 
-In the code above, it looks like we intended to implement the `String` method on the `Point` type, but since we didn't, we get a compiler error.  I observe a few things about this approach of using an  "interface assertion declaration" to check this early:
+In the code above, it looks like we intended to implement the [`String`](https://pkg.go.dev/fmt#Stringer.String) method on the `Point` type, but since we didn't, we get a compiler error.  I observe a few things about this approach of using an  "interface assertion declaration" to check this early:
 
 1. Notice the declaration uses a discard for its name. Since we don't actually care about ever referencing this value again, we can just use `_` for its name.
 2. Notice the conversion of an untyped nil literal to a _typed_ nil value. This is a cute way to avoid making an allocation (i.e. `new(Point)`)
 
-Interestingly, we decided to make `Point` implement `Stringer` via a _pointer_ instead of _directly_. Does this have any implications?
+Interestingly, we decided to make `Point` implement [`Stringer`](https://pkg.go.dev/fmt#Stringer) via a _pointer_ instead of _directly_. Does this have any implications?
 
 Well, it turns out that with this declaration, we can implement this interface using either selector for `Point`:
 
