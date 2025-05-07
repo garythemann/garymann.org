@@ -1,0 +1,38 @@
+---
+import FormattedDate from "@/components/FormattedDate.astro";
+import { Icon } from "astro-icon/components";
+import Separator from "../Separator.astro";
+
+interface Props {
+	publishDate: Date
+	updatedDate: Date | undefined 
+	readingTime: String | undefined
+}
+
+const { publishDate, updatedDate, readingTime } = Astro.props;
+
+const dateTimeOptions: Intl.DateTimeFormatOptions = {
+	month: "long",
+};
+
+---
+
+<div class="flex flex-wrap items-center text-lighter text-sm mt-[1.0625rem] mx-2 mb-2">
+	<span class="flex items-center h-[1.75rem]">
+		<Icon aria-hidden="true" class="flex items-center h-4 w-4 me-1" focusable="false" name="hugeicons:calendar-03" />
+		<FormattedDate date={publishDate} dateTimeOptions={dateTimeOptions} class="flex flex-shrink-0" />
+	</span>
+	<Separator type="dot" />
+	<span class="flex items-center h-[1.75rem]">
+		<Icon aria-hidden="true" class="flex items-center inline-block h-4 w-4 me-1" focusable="false" name="hugeicons:book-open-01" />
+		{readingTime ? `${readingTime}` : "Less than one minute read"}
+	</span>
+	{
+		updatedDate && (
+			<Separator type="dot" />
+			<span class="h-[1.75rem] flex items-center flex-shrink-0 rounded-lg bg-accent-two/5 text-accent-two py-1 px-2 text-sm gap-x-1">
+				Updated:<FormattedDate class="flex flex-shrink-0" date={updatedDate} dateTimeOptions={dateTimeOptions} />
+			</span>
+		)
+	}
+</div>

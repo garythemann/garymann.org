@@ -1,0 +1,9 @@
+---
+interface Props {
+	draft: boolean;
+}
+
+const { draft } = Astro.props;
+---
+
+{draft ? <span class="text-base text-red-500 ml-2">(Draft)</span> : null}

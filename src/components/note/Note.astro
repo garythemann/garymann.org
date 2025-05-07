@@ -16,7 +16,10 @@ const { Content } = await render(note);
 	class:list={[isPreview && "inline-grid w-full rounded-lg bg-color-75 px-4 md:px-8 py-2 md:py-4"]}
 	data-pagefind-body={isPreview ? false : true}
 >
-	<Tag class="flex items-end title md:sticky md:top-8 md:z-10" class:list={{ "text-base": isPreview }}>
+	<Tag
+		class="flex items-end title md:sticky md:top-8 md:z-10"
+		class:list={{ "text-base": isPreview }}
+	>
 		{
 			isPreview ? (
 				<a class="citrus-link" href={`/notes/${note.id}/`}>
@@ -27,11 +30,7 @@ const { Content } = await render(note);
 			)
 		}
 	</Tag>
-	<div 
-		class="flex items-end h-6 text-sm text-lighter"
-		class:list={{ "mt-4": !isPreview }}
-	>
-		
+	<div class="flex items-end h-6 text-sm text-lighter" class:list={{ "mt-4": !isPreview }}>
 		<FormattedDate
 			dateTimeOptions={{
 				hour: "2-digit",
@@ -43,6 +42,7 @@ const { Content } = await render(note);
 			date={note.data.publishDate}
 		/>
 	</div>
+
 	<div
 		class="prose prose-citrus mt-4 max-w-none [&>p:last-of-type]:mb-0"
 		class:list={{
@@ -51,7 +51,7 @@ const { Content } = await render(note);
 			"[&>blockquote:not(:first-of-type)]:hidden": isPreview,
 			// "[&>p]:line-clamp-4": isPreview,
 			// "[&>p:not(:first-of-type)]:hidden": isPreview,
-		}} 
+		}}
 	>
 		<Content />
 	</div>

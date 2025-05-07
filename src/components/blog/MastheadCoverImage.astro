@@ -1,0 +1,30 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+	coverImage:
+		| {
+				alt: string;
+				src: ImageMetadata;
+		  }
+		| undefined
+		| null;
+}
+
+const { coverImage } = Astro.props;
+---
+
+{
+	coverImage && (
+		<div class="mb-4 mt-2 overflow-auto rounded-lg">
+			<Image
+				alt={coverImage.alt}
+				class="object-cover"
+				fetchpriority="high"
+				loading="lazy"
+				loading="eager"
+				src={coverImage.src}
+			/>
+		</div>
+	)
+}
