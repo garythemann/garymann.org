@@ -90,6 +90,15 @@ export default defineConfig({
 			[
 				rehypeExternalLinks,
 				{
+					content: [
+						{
+							type: "element",
+							tagName: "span",
+							properties: { className: "external-link" },
+							children: [],
+						},
+					],
+					properties: { className: "whitespace-pre" },
 					rel: ["nofollow", "noreferrer"],
 					target: "_blank",
 				},

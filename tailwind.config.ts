@@ -348,5 +348,6 @@ export default {
 		"text-color-100",
 		"text-color-75",
 		"text-color-50",
+		"whitespace-pre",
 	],
 } satisfies Config;
