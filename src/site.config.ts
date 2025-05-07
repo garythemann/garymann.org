@@ -38,16 +38,7 @@ export const menuLinks: { path: string; title: string }[] = [
 	},
 ];
 
-export const footerLinks: { path: string; title: string; icon?: string }[] = [
-	{
-		path: "/",
-		title: "Home",
-	},
-	...menuLinks,
-	{
-		path: "/colophon",
-		title: "Colophon",
-	},
+export const socialLinks: { path: string; title: string; icon?: string }[] = [
 	{
 		path: "https://github.com/garythemann",
 		title: "GitHub",
@@ -58,4 +49,17 @@ export const footerLinks: { path: string; title: string; icon?: string }[] = [
 		title: "LinkedIn",
 		icon: "ei:sc-linkedin",
 	},
+];
+
+export const footerLinks: { path: string; title: string; icon?: string }[] = [
+	{
+		path: "/",
+		title: "Home",
+	},
+	...menuLinks,
+	{
+		path: "/colophon",
+		title: "Colophon",
+	},
+	...socialLinks,
 ];
