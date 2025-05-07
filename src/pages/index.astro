@@ -1,9 +1,8 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
 import FullBackdrop from "@/components/FullBackdrop.astro";
-import SocialList from "@/components/SocialList.astro";
 import PostPreview from "@/components/blog/PostPreview.astro";
-import Note from "@/components/note/Note.astro";
+import NotePreview from "@/components/note/NotePreview.astro";
 import { getAllPosts } from "@/data/post";
 import { getAllNotes } from "@/data/note";
 import PageLayout from "@/layouts/Base.astro";
@@ -53,7 +52,7 @@ const latestNotes = allNotes.sort(collectionDateSort).slice(0, MAX_NOTES);
 				<div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
 					{latestNotes.map((note) => (
 						<div>
-							<Note note={note} as="h4" isPreview />
+							<NotePreview note={note} as="h4" />
 						</div>
 					))}
 				</div>

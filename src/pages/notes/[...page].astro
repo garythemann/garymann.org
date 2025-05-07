@@ -1,7 +1,7 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
 import Pagination from "@/components/Paginator.astro";
-import Note from "@/components/note/Note.astro";
+import NotePreview from "@/components/note/NotePreview.astro";
 import PageLayout from "@/layouts/Base.astro";
 import { getAllNotes } from "@/data/note";
 import { collectionDateSort } from "@/utils/date";
@@ -57,7 +57,7 @@ const paginationProps = {
 			{
 				page.data.map((note) => (
 					<div>
-						<Note note={note} as="h4" isPreview />
+						<NotePreview note={note} as="h4" />
 					</div>
 				))
 			}

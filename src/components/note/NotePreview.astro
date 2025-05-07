@@ -1,0 +1,63 @@
+---
+import { type CollectionEntry, render } from "astro:content";
+import FormattedDate from "@/components/FormattedDate.astro";
+import type { HTMLTag, Polymorphic } from "astro/types";
+
+type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
+	note: CollectionEntry<"note">;
+};
+
+const { as: Tag = "div", note } = Astro.props;
+const { Content } = await render(note)
+---
+
+<article
+	data-article-preview
+	class="inline-grid w-full rounded-lg bg-color-75 px-4 py-2 md:px-8 md:py-4"
+	data-pagefind-body={false}
+>
+	<Tag class="title flex items-end text-base md:sticky md:top-8 md:z-10">
+		{
+			(
+				<a data-article-preview-link class="citrus-link" href={`/notes/${note.id}/`}>
+					{note.data.title}
+				</a>
+			)
+		}
+		{note.data.draft && <span class="text-red-500">(Draft) </span>}
+	</Tag>
+	<div class="mt-4 flex h-6 items-end text-sm text-lighter">
+		<FormattedDate
+			dateTimeOptions={{
+				hour: "2-digit",
+				minute: "2-digit",
+				year: "numeric",
+				month: "long",
+				day: "2-digit",
+			}}
+			date={note.data.publishDate}
+		/>
+	</div>
+
+	<div
+		class="prose prose-citrus mt-4 line-clamp-4 max-w-none [&>blockquote:not(:first-of-type)]:hidden [&>blockquote]:mb-0 [&>blockquote]:line-clamp-4 [&>p:last-of-type]:mb-0"
+	>
+		<Content />
+	</div>
+</article>
+<script>
+	// Provide button-like affordance to NotePreview
+
+	document.addEventListener("DOMContentLoaded", () => {
+		document.querySelectorAll("[data-article-preview]").forEach((preview) => {
+			let link = preview.querySelector("[data-article-preview-link]"),
+				href = link && link instanceof HTMLAnchorElement && link.href;
+			if (href) {
+				preview.classList.add("cursor-pointer");
+				preview.addEventListener("click", async () => {
+					window.location.assign(href);
+				});
+			}
+		});
+	});
+</script>
