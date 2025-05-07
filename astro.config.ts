@@ -100,7 +100,6 @@ export default defineConfig({
 					],
 					properties: { className: "whitespace-pre" },
 					rel: ["nofollow", "noreferrer"],
-					target: "_blank",
 				},
 			],
 

@@ -35,8 +35,7 @@ const comments = mentions.filter(
 								<a
 									class="u-author not-prose shrink-0 overflow-hidden rounded-full outline-none ring-2 ring-textColor hover:ring-4 hover:ring-link focus-visible:ring-4 focus-visible:ring-link"
 									href={mention.author.url}
-									rel="noreferrer"
-									target="_blank"
+									rel="noreferrer noopener"
 									title={mention.author.name}
 								>
 									<Image
@@ -66,8 +65,7 @@ const comments = mentions.filter(
 									aria-labelledby="cmt-source"
 									class="u-url not-prose hover:text-link"
 									href={mention.url}
-									rel="noreferrer"
-									target="_blank"
+									rel="noreferrer noopener"
 								>
 									<span class="hidden" id="cmt-source">
 										Vist the source of this webmention
