@@ -1,14 +1,15 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 
 import Backdrop from "@/components/Backdrop.astro";
-import Note from "@/components/note/Note.astro";
+import Masthead from "@/components/note/Masthead.astro";
 import BaseLayout from "@/layouts/Base.astro";
+import { getAllNotes } from "@/data/note";
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 
 // If you're using an adaptor in SSR mode, getStaticPaths wont work -> https://docs.astro.build/en/guides/routing/#modifying-the-slug-example-for-ssr
 export const getStaticPaths = (async () => {
-	const allNotes = await getCollection("note");
+	const allNotes = await getAllNotes();
 	return allNotes.map((note) => ({
 		params: { slug: note.id },
 		props: { note },
@@ -25,25 +26,26 @@ const meta = {
 		`Read about my note posted on: ${note.data.publishDate.toLocaleDateString()}`,
 	title: note.data.title,
 };
+
+const { Content } = await render(note);
 ---
 
 <BaseLayout meta={meta}>
 	<Backdrop />
-	
+
+	<Masthead content={note} />
 
 	<div class="mt-6 flex sm:grid-cols-[auto_1fr] md:items-start gap-x-8">
 		<article class="grid flex-grow grid-cols-1 break-words pt-4" data-pagefind-body>
-			<div class="prose prose-citrus max-w-none flex-grow prose-headings:font-semibold prose-headings:text-accent-base prose-headings:before:text-accent-two">
-				<slot />
+			<div class="max-w-none flex-grow">
+				<div class="prose prose-citrus mt-4 max-w-none [&>p:last-of-type]:mb-0">
+					<Content />
+				</div>
 			</div>
 
-			<div class="max-w-none flex-grow ">
-				<Note as="h1" note={note} />
-			</div>
-			
 			<!-- TODO Webmentions nav would go here -->
 		</article>
-		
+
 		<!-- TODO Headings nav would go here -->
 	</div>
 </BaseLayout>
@@ -52,7 +54,7 @@ const meta = {
 	// Wait for the content to fully load
 	document.addEventListener("DOMContentLoaded", () => {
 		const buttonsPanel = document.getElementById("buttons-panel");
-		
+
 		if (buttonsPanel) {
 			buttonsPanel.classList.add("fixed");
 			console.log("Class 'fixed' added to the buttons-panel element.");

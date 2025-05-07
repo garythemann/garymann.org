@@ -5,6 +5,7 @@ import SocialList from "@/components/SocialList.astro";
 import PostPreview from "@/components/blog/PostPreview.astro";
 import Note from "@/components/note/Note.astro";
 import { getAllPosts } from "@/data/post";
+import { getAllNotes } from "@/data/note";
 import PageLayout from "@/layouts/Base.astro";
 import { collectionDateSort } from "@/utils/date";
 
@@ -17,7 +18,7 @@ const allPostsByDate = allPosts
 
 // Notes
 const MAX_NOTES = 2;
-const allNotes = await getCollection("note");
+const allNotes = await getAllNotes();
 const latestNotes = allNotes.sort(collectionDateSort).slice(0, MAX_NOTES);
 ---
 
@@ -50,13 +51,11 @@ const latestNotes = allNotes.sort(collectionDateSort).slice(0, MAX_NOTES);
 					<a href="/notes/">Notes</a>
 				</h2>
 				<div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
-					{
-						latestNotes.map((note) => (
-							<div>
-								<Note note={note} as="h4" isPreview />
-							</div>
-						))
-					}
+					{latestNotes.map((note) => (
+						<div>
+							<Note note={note} as="h4" isPreview />
+						</div>
+					))}
 				</div>
 			</section>
 		)
@@ -96,4 +95,3 @@ const latestNotes = allNotes.sort(collectionDateSort).slice(0, MAX_NOTES);
 	</div>
 	-->
 </PageLayout>
-

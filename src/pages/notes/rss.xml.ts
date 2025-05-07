@@ -1,9 +1,10 @@
 import { getCollection } from "astro:content";
 import { siteConfig } from "@/site.config";
 import rss from "@astrojs/rss";
+import { getAllNotes } from "@/data/note";
 
 export const GET = async () => {
-	const notes = await getCollection("note");
+	const notes = await getAllNotes();
 
 	return rss({
 		title: siteConfig.title,

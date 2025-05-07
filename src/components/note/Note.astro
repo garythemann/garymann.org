@@ -29,6 +29,7 @@ const { Content } = await render(note);
 				<>{note.data.title}</>
 			)
 		}
+		{note.data.draft && <span class="text-red-500">(Draft) </span>}
 	</Tag>
 	<div class="flex items-end h-6 text-sm text-lighter" class:list={{ "mt-4": !isPreview }}>
 		<FormattedDate
