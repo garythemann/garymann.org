@@ -17,7 +17,7 @@ const {
 ---
 
 <html
-	class="overflow-x-hidden grid scroll-pt-20 scroll-smooth font-sans text-textColor text-xl md:text-base antialiased"
+	class="grid scroll-pt-20 overflow-x-hidden scroll-smooth font-sans text-xl text-textColor antialiased md:text-base"
 	lang={siteConfig.lang}
 >
 	<head>
@@ -26,15 +26,15 @@ const {
 	<body class="min-w-4xl relative m-auto min-h-screen w-full max-w-6xl grow bg-bgColor">
 		<ThemeProvider />
 		<SkipLink />
-	
+
 		<div class="relative flex min-h-screen w-full">
 			<!-- Sidebar for Docs Series -->
 			<slot name="sidebar" />
 			<!-- Main container for the page content -->
 			<div id="container" class="min-w-3xl relative m-auto max-w-4xl grow">
-				<div class="m-auto grid min-h-screen md:grid-rows-[auto_auto_1fr] px-4 md:px-8 md:pt-4">
+				<div class="m-auto grid min-h-screen px-4 md:grid-rows-[auto_auto_1fr] md:px-8 md:pt-4">
 					<Header />
-					<main id="main" class="relative flex-grow mt-32 md:mt-[3.5rem]">
+					<main id="main" class="relative mt-32 flex-grow md:mt-[3.5rem]">
 						<slot />
 					</main>
 					<Footer />

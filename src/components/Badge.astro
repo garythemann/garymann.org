@@ -17,8 +17,7 @@ const badgeClasses = {
 	},
 };
 
-const variantClasses =
-	badgeClasses.variants[variant as keyof typeof badgeClasses.variants]; //
+const variantClasses = badgeClasses.variants[variant as keyof typeof badgeClasses.variants]; //
 ---
 
 <div class={`${badgeClasses.base} ${variantClasses}`}>

@@ -15,9 +15,9 @@ const { content } = Astro.props;
 const { publishDate, tags, title, description, draft } = content.data;
 ---
 
-<div class="md:sticky md:top-8 md:z-10 flex items-end">
+<div class="flex items-end md:sticky md:top-8 md:z-10">
 	<h1
-		class="title ml-2 md:sticky md:top-4 md:z-20 line-clamp-none md:line-clamp-1 md:max-w-[calc(100%-10rem)]"
+		class="title ml-2 line-clamp-none md:sticky md:top-4 md:z-20 md:line-clamp-1 md:max-w-[calc(100%-10rem)]"
 		title={title}
 		data-pagefind-body
 	>
@@ -27,10 +27,10 @@ const { publishDate, tags, title, description, draft } = content.data;
 
 <MastheadDates
 	publishDate={publishDate}
-	updatedDate={ undefined }
+	updatedDate={undefined}
 	readingTime={content.rendered?.metadata?.frontmatter?.readingTime}
 />
 
 <DraftIndicator draft={draft} />
-{ description && <MastheadDescription description={description} /> }
+{description && <MastheadDescription description={description} />}
 <MastheadTags tags={tags} />

@@ -16,49 +16,59 @@ const { headings } = await render(series);
 ---
 
 <BaseLayout meta={{ description, title }}>
-	
 	<!-- SeriesPanel     "sidebar" -->
-	{series.id && (<SeriesPanel slot="sidebar" seriesId={series.id} />)}
+	{series.id && <SeriesPanel slot="sidebar" seriesId={series.id} />}
 
-	<div class="md:sticky md:top-8 md:z-20 flex items-end">
+	<div class="flex items-end md:sticky md:top-8 md:z-20">
 		<button
 			id="toggle-panel"
-			class="hidden md:flex z-30 mr-2 h-8 w-8 items-center bg-accent-base/10 flex-shrink-0 justify-center rounded-lg text-accent-base hover:text-accent-base/90"
+			class="z-30 mr-2 hidden h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-accent-base/10 text-accent-base hover:text-accent-base/90 md:flex"
 			aria-label="Toggle Series Panel"
 			aria-controls="series-panel"
 		>
-			{/*
+			{
+				/*
 			<Icon aria-hidden="true" class="h-6 w-6" focusable="false" name="hugeicons:sidebar-left" />
-			*/}
-			<Icon aria-hidden="true" class="flex-shrink-0 h-6 w-6" focusable="false" name="solar:notes-bold" />
+			*/
+			}
+			<Icon
+				aria-hidden="true"
+				class="h-6 w-6 flex-shrink-0"
+				focusable="false"
+				name="solar:notes-bold"
+			/>
 		</button>
 		<button
 			id="toggle-toc"
-			class="hidden md:flex z-30 mr-2 h-8 w-8 items-center flex-shrink-0 bg-accent-base/10 justify-center rounded-lg text-accent-base hover:text-accent-base/90"
+			class="z-30 mr-2 hidden h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-accent-base/10 text-accent-base hover:text-accent-base/90 md:flex"
 			aria-label="Table of Contents"
-		>	
+		>
 			<Icon aria-hidden="true" class="h-6 w-6" focusable="false" name="solar:clipboard-list-bold" />
 		</button>
 
-		<h1 class="title md:sticky md:top-4 md:z-20 line-clamp-none md:line-clamp-1 md:max-w-lg lg:max-w-xl">
+		<h1
+			class="title line-clamp-none md:sticky md:top-4 md:z-20 md:line-clamp-1 md:max-w-lg lg:max-w-xl"
+		>
 			{title}
 		</h1>
 	</div>
-	<p class="prose prose-citrus max-w-none mt-[1.125rem]">
+	<p class="prose prose-citrus mt-[1.125rem] max-w-none">
 		{description}
 	</p>
 
-	<div class="mt-6 flex sm:grid-cols-[auto_1fr] md:items-start gap-x-8">
+	<div class="mt-6 flex gap-x-8 sm:grid-cols-[auto_1fr] md:items-start">
 		<article class="grid flex-grow grid-cols-1 break-words pt-4" data-pagefind-body>
-			<div class="prose prose-citrus max-w-none flex-grow prose-headings:font-semibold prose-headings:text-accent-base prose-headings:before:text-accent-two">
+			<div
+				class="prose prose-citrus max-w-none flex-grow prose-headings:font-semibold prose-headings:text-accent-base prose-headings:before:text-accent-two"
+			>
 				<slot />
 			</div>
 		</article>
 		{
 			!!headings.length && (
-				<aside 
-					id="toc-panel" 
-					class="sticky md:top-20 z-10 hidden md:w-[16rem] md:min-w-[16rem] rounded-lg md:block"
+				<aside
+					id="toc-panel"
+					class="sticky z-10 hidden rounded-lg md:top-20 md:block md:w-[16rem] md:min-w-[16rem]"
 				>
 					<TOC headings={headings} />
 				</aside>
@@ -69,11 +79,14 @@ const { headings } = await render(series);
 	<div class="left-0 right-12 z-50 ml-auto w-fit md:absolute">
 		<button
 			id="to-top-button"
-			class="fixed bottom-14 flex h-12 w-12 text-light translate-y-28 items-center justify-center rounded-full border-2 border-special-lighter bg-bgColor text-3xl drop-shadow-xl transition-all duration-300 hover:text-accent-two data-[show=true]:translate-y-0 data-[show=true]:opacity-100"
+			class="fixed bottom-14 flex h-12 w-12 translate-y-28 items-center justify-center rounded-full border-2 border-special-lighter bg-bgColor text-3xl text-light drop-shadow-xl transition-all duration-300 hover:text-accent-two data-[show=true]:translate-y-0 data-[show=true]:opacity-100"
 			aria-label="Back to Top"
 			data-show="false"
-		>	
-			<span class="absolute inset-0 rounded-full bg-special-light flex items-center justify-center" aria-hidden="true">
+		>
+			<span
+				class="absolute inset-0 flex items-center justify-center rounded-full bg-special-light"
+				aria-hidden="true"
+			>
 				<svg
 					class="h-6 w-6"
 					fill="none"
@@ -83,7 +96,8 @@ const { headings } = await render(series);
 					viewBox="0 0 24 24"
 					xmlns="http://www.w3.org/2000/svg"
 				>
-					<path d="M4.5 15.75l7.5-7.5 7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+					<path d="M4.5 15.75l7.5-7.5 7.5 7.5" stroke-linecap="round" stroke-linejoin="round"
+					></path>
 				</svg>
 			</span>
 		</button>
@@ -92,11 +106,13 @@ const { headings } = await render(series);
 	<!--      -->
 	<mobile-button
 		id="toggle-panel-mobile"
-		class="size-12 flex items-center justify-center block sm:hidden fixed bottom-4 shadow-[0px_10px_25px_rgba(0,0,0,0.15)] border border-special-lighter right-4 z-50 rounded-lg bg-bgColor text-accent-base hover:text-bg-accent-base/90"
+		class="hover:text-bg-accent-base/90 fixed bottom-4 right-4 z-50 block flex size-12 items-center justify-center rounded-lg border border-special-lighter bg-bgColor text-accent-base shadow-[0px_10px_25px_rgba(0,0,0,0.15)] sm:hidden"
 		aria-label="Toggle Series Panel"
 	>
-		<span class="absolute inset-0 rounded-lg flex items-center justify-center bg-special-light hover:text-accent-base/90">
-			<Icon class="size-8" name="solar:notes-bold"/>
+		<span
+			class="absolute inset-0 flex items-center justify-center rounded-lg bg-special-light hover:text-accent-base/90"
+		>
+			<Icon class="size-8" name="solar:notes-bold" />
 		</span>
 	</mobile-button>
 
@@ -186,15 +202,15 @@ const { headings } = await render(series);
 
 <script>
 	//
-	const toggleTocBtn = document.getElementById('toggle-toc');
-	const closeTocBtn = document.getElementById('close-toc');
-	const tocPanel = document.getElementById('toc-panel');
+	const toggleTocBtn = document.getElementById("toggle-toc");
+	const closeTocBtn = document.getElementById("close-toc");
+	const tocPanel = document.getElementById("toc-panel");
 	const toggleTocMobileBtn = document.getElementById("toggle-toc-mobile");
 
 	//    (  )
 	if (!tocPanel) {
-		console.error(' toc-panel  ');
-		throw new Error('toc-panel is required');
+		console.error(" toc-panel  ");
+		throw new Error("toc-panel is required");
 	}
 
 	//   ,
@@ -208,14 +224,14 @@ const { headings } = await render(series);
 
 	//
 	const hideToc = () => {
-		tocPanel.classList.add('hidden');
-		tocPanel.classList.remove('md:block');
+		tocPanel.classList.add("hidden");
+		tocPanel.classList.remove("md:block");
 	};
 
 	//
 	const showToc = () => {
-		tocPanel.classList.remove('hidden');
-		tocPanel.classList.add('md:block');
+		tocPanel.classList.remove("hidden");
+		tocPanel.classList.add("md:block");
 	};
 
 	//
@@ -226,41 +242,41 @@ const { headings } = await render(series);
 			showToc(); //  ,
 		}
 	};
-	
+
 	//
 	if (toggleTocBtn) {
 		toggleTocBtn.addEventListener("click", toggleToc);
 	} else {
-		console.error(' toggle-toc  ');
+		console.error(" toggle-toc  ");
 	}
 
 	//
 	if (toggleTocMobileBtn) {
 		toggleTocMobileBtn.addEventListener("click", toggleToc);
 	} else {
-		console.error(' toggle-toc-mobile  ');
+		console.error(" toggle-toc-mobile  ");
 	}
 
 	//
 	if (closeTocBtn) {
-		closeTocBtn.addEventListener('click', hideToc);
+		closeTocBtn.addEventListener("click", hideToc);
 	} else {
-		console.error(' close-toc  ');
+		console.error(" close-toc  ");
 	}
 </script>
 
 <script>
-  //
-  document.addEventListener("DOMContentLoaded", () => {
-    const buttonsPanel = document.getElementById("buttons-panel");
-    
-    if (buttonsPanel) {
-      buttonsPanel.classList.add("fixed");
-      console.log(" 'fixed'    buttons-panel.");
-    } else {
-      console.error("  ID 'buttons-panel'  .");
-    }
-  });
+	//
+	document.addEventListener("DOMContentLoaded", () => {
+		const buttonsPanel = document.getElementById("buttons-panel");
+
+		if (buttonsPanel) {
+			buttonsPanel.classList.add("fixed");
+			console.log(" 'fixed'    buttons-panel.");
+		} else {
+			console.error("  ID 'buttons-panel'  .");
+		}
+	});
 </script>
 
 <script>

@@ -13,8 +13,7 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const { ogImage, title, description, updatedDate, publishDate, seriesId } =
-	post.data;
+const { ogImage, title, description, updatedDate, publishDate, seriesId } = post.data;
 
 const socialImage = ogImage ?? `/og-image/${post.id}.png`;
 const articleDate = updatedDate?.toISOString() ?? publishDate.toISOString();
@@ -28,13 +27,13 @@ const { headings } = await render(post);
 	<div class="left-0 right-0 top-0 z-30 ml-auto h-0 w-fit px-2 md:absolute">
 		<div class="fixed top-0 -ml-[4rem] flex space-x-2 bg-bgColor pt-8">
 	-->
-			<!-- Button background -->
-			<!--
+	<!-- Button background -->
+	<!--
 			<div class="fixed top-0 h-20 right-[0%] w-[50%] bg-gradient-to-l from-orange-300 via-pink-300 to-transparent  opacity-40 dark:opacity-10">
 			</div>
 			-->
 
-			<!--
+	<!--
 			 <button
 				aria-expanded="false"
 				aria-haspopup="menu"
@@ -52,35 +51,42 @@ const { headings } = await render(post);
 	-->
 
 	<!-- SeriesPanel is inserted into the named slot "sidebar" -->
-	{seriesId && (<SeriesPanel slot="sidebar" seriesId={seriesId} />)}
+	{seriesId && <SeriesPanel slot="sidebar" seriesId={seriesId} />}
 
 	<Masthead content={post} />
-	
-	<div class="mt-6 flex sm:grid-cols-[auto_1fr] md:items-start gap-x-8">
+
+	<div class="mt-6 flex gap-x-8 sm:grid-cols-[auto_1fr] md:items-start">
 		<article class="grid flex-grow grid-cols-1 break-words pt-4" data-pagefind-body>
-			<div class="prose prose-citrus max-w-none flex-grow prose-headings:font-semibold prose-headings:text-accent-base prose-headings:before:text-accent-two">
+			<div
+				class="prose prose-citrus max-w-none flex-grow prose-headings:font-semibold prose-headings:text-accent-base prose-headings:before:text-accent-two"
+			>
 				<slot />
 			</div>
 			<WebMentions />
 		</article>
-		{!!headings.length && (
-			<aside 
-				id="toc-panel" 
-				class="md:sticky md:top-20 z-10 hidden md:w-[14rem] md:min-w-[14rem] md:rounded-lg md:block"
-			>
-				<TOC headings={headings} />
-			</aside>
-		)}
+		{
+			!!headings.length && (
+				<aside
+					id="toc-panel"
+					class="z-10 hidden md:sticky md:top-20 md:block md:w-[14rem] md:min-w-[14rem] md:rounded-lg"
+				>
+					<TOC headings={headings} />
+				</aside>
+			)
+		}
 	</div>
 
 	<div class="left-0 right-12 z-50 ml-auto w-fit md:absolute">
 		<button
 			id="to-top-button"
-			class="fixed bottom-14 flex h-12 w-12 text-light translate-y-28 items-center justify-center rounded-full bg-bgColor text-3xl drop-shadow-xl transition-all duration-300 hover:text-accent-two data-[show=true]:translate-y-0 data-[show=true]:opacity-100"
+			class="fixed bottom-14 flex h-12 w-12 translate-y-28 items-center justify-center rounded-full bg-bgColor text-3xl text-light drop-shadow-xl transition-all duration-300 hover:text-accent-two data-[show=true]:translate-y-0 data-[show=true]:opacity-100"
 			aria-label="Back to Top"
 			data-show="false"
-		>	
-			<span class="absolute inset-0 rounded-full bg-special-lighter flex items-center justify-center" aria-hidden="true">
+		>
+			<span
+				class="absolute inset-0 flex items-center justify-center rounded-full bg-special-lighter"
+				aria-hidden="true"
+			>
 				<svg
 					class="h-6 w-6"
 					fill="none"
@@ -90,24 +96,27 @@ const { headings } = await render(post);
 					viewBox="0 0 24 24"
 					xmlns="http://www.w3.org/2000/svg"
 				>
-					<path d="M4.5 15.75l7.5-7.5 7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+					<path d="M4.5 15.75l7.5-7.5 7.5 7.5" stroke-linecap="round" stroke-linejoin="round"
+					></path>
 				</svg>
 			</span>
 		</button>
 	</div>
 
 	<!-- Series button for mobile screens -->
-	{seriesId && (
-		<mobile-button
-			id="toggle-panel-mobile"
-			class="size-12 flex items-center justify-center block sm:hidden fixed bottom-4 shadow-[0px_10px_25px_rgba(0,0,0,0.15)] border border-special-lighter right-4 z-50 rounded-lg bg-bgColor text-accent-base hover:text-bg-accent-base/90"
-			aria-label="Toggle Series Panel"
-		>
-			<span class="absolute inset-0 rounded-lg flex items-center justify-center bg-special-light hover:text-accent-base/90">
-				<Icon class="size-8" name="solar:notes-bold"/>
-			</span>
-		</mobile-button>
-	)}
+	{
+		seriesId && (
+			<mobile-button
+				id="toggle-panel-mobile"
+				class="hover:text-bg-accent-base/90 fixed bottom-4 right-4 z-50 block flex size-12 items-center justify-center rounded-lg border border-special-lighter bg-bgColor text-accent-base shadow-[0px_10px_25px_rgba(0,0,0,0.15)] sm:hidden"
+				aria-label="Toggle Series Panel"
+			>
+				<span class="absolute inset-0 flex items-center justify-center rounded-lg bg-special-light hover:text-accent-base/90">
+					<Icon class="size-8" name="solar:notes-bold" />
+				</span>
+			</mobile-button>
+		)
+	}
 
 	<!-- NEEDS IMPROVEMENT!!! -->
 	<!-- Table of Contents button for mobile screens -->
@@ -137,12 +146,13 @@ const { headings } = await render(post);
 				// Create the button
 				const copyButton = document.createElement("button");
 				copyButton.className =
-				"absolute flex items-center justify-center bg-bgColor h-6 font-medium overflow-hidden rounded-md text-light hover:text-accent-two font-sans text-sm font-medium top-2 right-2";
+					"absolute flex items-center justify-center bg-bgColor h-6 font-medium overflow-hidden rounded-md text-light hover:text-accent-two font-sans text-sm font-medium top-2 right-2";
 
 				// Create the span element that will hold the button text
 				const buttonText = document.createElement("span");
 				buttonText.innerText = "Copy"; // Initial text
-				buttonText.className = "flex items-center block w-full h-full px-2 bg-[var(--code-title-bg)]"; // Set the span to take up full width with background color
+				buttonText.className =
+					"flex items-center block w-full h-full px-2 bg-[var(--code-title-bg)]"; // Set the span to take up full width with background color
 
 				copyButton.appendChild(buttonText); // Append span to the button
 
@@ -239,15 +249,15 @@ const { headings } = await render(post);
 
 <script>
 	// Get the button and panel elements
-	const toggleTocBtn = document.getElementById('toggle-toc');
-	const closeTocBtn = document.getElementById('close-toc');
-	const tocPanel = document.getElementById('toc-panel');
+	const toggleTocBtn = document.getElementById("toggle-toc");
+	const closeTocBtn = document.getElementById("close-toc");
+	const tocPanel = document.getElementById("toc-panel");
 	const toggleTocMobileBtn = document.getElementById("toggle-toc-mobile");
 
 	// Check for the panel's presence (required for functionality)
 	if (!tocPanel) {
-		console.error('Element toc-panel not found');
-		throw new Error('toc-panel is required');
+		console.error("Element toc-panel not found");
+		throw new Error("toc-panel is required");
 	}
 
 	// Function to check if the table of contents is visible
@@ -261,14 +271,14 @@ const { headings } = await render(post);
 
 	// Function to hide the panel
 	const hideToc = () => {
-		tocPanel.classList.add('hidden');
-		tocPanel.classList.remove('md:block');
+		tocPanel.classList.add("hidden");
+		tocPanel.classList.remove("md:block");
 	};
 
 	// Function to show the panel
 	const showToc = () => {
-		tocPanel.classList.remove('hidden');
-		tocPanel.classList.add('md:block');
+		tocPanel.classList.remove("hidden");
+		tocPanel.classList.add("md:block");
 	};
 
 	// Common event handler for both buttons
@@ -279,26 +289,26 @@ const { headings } = await render(post);
 			showToc(); // If hidden, show it
 		}
 	};
-	
+
 	// Add event handler for the toggle button
 	if (toggleTocBtn) {
 		toggleTocBtn.addEventListener("click", toggleToc);
 	} else {
-		console.error('Element toggle-toc not found');
+		console.error("Element toggle-toc not found");
 	}
 
 	// Add event handler for the toggle button (mobile)
 	if (toggleTocMobileBtn) {
 		toggleTocMobileBtn.addEventListener("click", toggleToc);
 	} else {
-		console.error('Element toggle-toc-mobile not found');
+		console.error("Element toggle-toc-mobile not found");
 	}
 
 	// Add event handler for the close button
 	if (closeTocBtn) {
-		closeTocBtn.addEventListener('click', hideToc);
+		closeTocBtn.addEventListener("click", hideToc);
 	} else {
-		console.error('Element close-toc not found');
+		console.error("Element close-toc not found");
 	}
 </script>
 
@@ -306,7 +316,7 @@ const { headings } = await render(post);
 	// Wait for the content to fully load
 	document.addEventListener("DOMContentLoaded", () => {
 		const buttonsPanel = document.getElementById("buttons-panel");
-		
+
 		if (buttonsPanel) {
 			buttonsPanel.classList.add("fixed");
 			console.log("Class 'fixed' added to the buttons-panel element.");

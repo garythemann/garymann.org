@@ -13,11 +13,11 @@ const { Content } = await render(note);
 ---
 
 <article
-	class:list={[isPreview && "inline-grid w-full rounded-lg bg-color-75 px-4 md:px-8 py-2 md:py-4"]}
+	class:list={[isPreview && "inline-grid w-full rounded-lg bg-color-75 px-4 py-2 md:px-8 md:py-4"]}
 	data-pagefind-body={isPreview ? false : true}
 >
 	<Tag
-		class="flex items-end title md:sticky md:top-8 md:z-10"
+		class="title flex items-end md:sticky md:top-8 md:z-10"
 		class:list={{ "text-base": isPreview }}
 	>
 		{
@@ -31,7 +31,7 @@ const { Content } = await render(note);
 		}
 		{note.data.draft && <span class="text-red-500">(Draft) </span>}
 	</Tag>
-	<div class="flex items-end h-6 text-sm text-lighter" class:list={{ "mt-4": !isPreview }}>
+	<div class="flex h-6 items-end text-sm text-lighter" class:list={{ "mt-4": !isPreview }}>
 		<FormattedDate
 			dateTimeOptions={{
 				hour: "2-digit",
@@ -48,7 +48,7 @@ const { Content } = await render(note);
 		class="prose prose-citrus mt-4 max-w-none [&>p:last-of-type]:mb-0"
 		class:list={{
 			"line-clamp-4": isPreview,
-			"[&>blockquote]:line-clamp-4 [&>blockquote]:mb-0": isPreview,
+			"[&>blockquote]:mb-0 [&>blockquote]:line-clamp-4": isPreview,
 			"[&>blockquote:not(:first-of-type)]:hidden": isPreview,
 			// "[&>p]:line-clamp-4": isPreview,
 			// "[&>p:not(:first-of-type)]:hidden": isPreview,

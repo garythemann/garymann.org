@@ -43,15 +43,15 @@ const meta = {
 	<div class="flex flex-wrap items-center gap-2">
 		{
 			allTags.map(([tag, val]) => (
-			<div class="flex items-center gap-x-2">
-				<a aria-label={`View all posts with the tag: ${tag}`} href={`/tags/${tag}`}>
-				<Badge variant="muted" title={tag}>
-					<span class="text-xs font-normal">
-						&nbsp;{val} post{val > 1 && "s"}
-					</span>
-				</Badge>
-				</a>
-			</div>
+				<div class="flex items-center gap-x-2">
+					<a aria-label={`View all posts with the tag: ${tag}`} href={`/tags/${tag}`}>
+						<Badge variant="muted" title={tag}>
+							<span class="text-xs font-normal">
+								&nbsp;{val} post{val > 1 && "s"}
+							</span>
+						</Badge>
+					</a>
+				</div>
 			))
 		}
 	</div>

@@ -184,7 +184,7 @@
 	h4,
 	h5,
 	h6 {
-		@apply min-h-8 h-auto !important;
+		@apply h-auto min-h-8 !important;
 	}
 
 	/*        rehype-pretty-code */
@@ -198,7 +198,7 @@
 :root {
 	/*     rehype-pretty-code */
 	figure[data-rehype-pretty-code-figure] {
-		@apply relative m-0 rounded-lg overflow-auto;
+		@apply relative m-0 overflow-auto rounded-lg;
 
 		figcaption {
 			@apply m-0;
@@ -206,7 +206,7 @@
 
 		/*       */
 		[data-rehype-pretty-code-title] {
-			@apply break-words bg-[var(--code-title-bg)] border-b border-bgColor text-textColor px-4 flex items-center text-sm h-10;
+			@apply flex h-10 items-center break-words border-b border-bgColor bg-[var(--code-title-bg)] px-4 text-sm text-textColor;
 
 			& + pre {
 				@apply m-0 rounded-t-none; /*   ,    */
@@ -215,7 +215,7 @@
 
 		/*     */
 		pre {
-			@apply m-0 static px-0 py-2 max-h-[612px] text-sm;
+			@apply static m-0 max-h-[612px] px-0 py-2 text-sm;
 
 			/*     */
 			> code {
@@ -232,7 +232,7 @@
 
 				/*       */
 				> [data-line] {
-					@apply px-4 h-6 bg-transparent flex items-center;
+					@apply flex h-6 items-center bg-transparent px-4;
 				}
 
 				/*    */
@@ -270,13 +270,13 @@
 
 	/*     pre */
 	pre {
-		@apply bg-[var(--code-bg)] text-[var(--theme-text)] rounded-lg leading-loose m-0;
+		@apply m-0 rounded-lg bg-[var(--code-bg)] leading-loose text-[var(--theme-text)];
 		/* @apply bg-[var(--code-bg)] text-[var(--theme-accent)] rounded-lg leading-loose m-0; */
 	}
 
 	/*     (rehype pretty code    tailwind.config.css) */
 	:not(pre) > code {
-		@apply bg-[var(--code-inline-bg)] px-2 py-1 text-sm rounded-lg;
+		@apply rounded-lg bg-[var(--code-inline-bg)] px-2 py-1 text-sm;
 	}
 
 	/*      rehype-pretty-copy (  ) */

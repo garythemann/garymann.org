@@ -31,12 +31,12 @@ const postSeries = seriesId
 	: null;
 ---
 
-<div class="md:sticky md:top-8 md:z-10 flex items-end">
+<div class="flex items-end md:sticky md:top-8 md:z-10">
 	{
 		postSeries ? (
 			<button
 				id="toggle-panel"
-				class="hidden md:flex mr-2 h-8 w-8 items-center bg-accent-base/10 flex-shrink-0 justify-center rounded-lg text-accent-base hover:brightness-110"
+				class="mr-2 hidden h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-accent-base/10 text-accent-base hover:brightness-110 md:flex"
 				aria-label="Toggle Series Panel"
 				aria-controls="series-panel"
 			>
@@ -45,7 +45,7 @@ const postSeries = seriesId
 				*/}
 				<Icon
 					aria-hidden="true"
-					class="flex-shrink-0 h-6 w-6"
+					class="h-6 w-6 flex-shrink-0"
 					focusable="false"
 					name="solar:notes-bold"
 				/>
@@ -57,7 +57,7 @@ const postSeries = seriesId
 		!!(content.rendered?.metadata?.headings as unknown[] | undefined)?.length && (
 			<button
 				id="toggle-toc"
-				class="hidden md:flex h-8 w-8 items-center flex-shrink-0 bg-accent-base/10 justify-center rounded-lg text-accent-base hover:brightness-110"
+				class="hidden h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-accent-base/10 text-accent-base hover:brightness-110 md:flex"
 				aria-label="Table of Contents"
 			>
 				<Icon
@@ -71,7 +71,7 @@ const postSeries = seriesId
 	}
 
 	<h1
-		class="title ml-2 md:sticky md:top-4 md:z-20 line-clamp-none md:line-clamp-1 md:max-w-[calc(100%-10rem)]"
+		class="title ml-2 line-clamp-none md:sticky md:top-4 md:z-20 md:line-clamp-1 md:max-w-[calc(100%-10rem)]"
 		title={title}
 		data-pagefind-body
 	>

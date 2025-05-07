@@ -15,8 +15,7 @@ const tagClasses = {
 	},
 };
 
-const variantClasses =
-	tagClasses.variants[variant as keyof typeof tagClasses.variants]; //
+const variantClasses = tagClasses.variants[variant as keyof typeof tagClasses.variants]; //
 ---
 
 <div class={`${tagClasses.base} ${variantClasses}`}>

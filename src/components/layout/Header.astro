@@ -7,8 +7,8 @@ import { Icon } from "astro-icon/components";
 
 <header
 	id="main-header"
-	class="fixed px-4 md:px-0 left-0 z-20 flex items-center md:relative top-0 h-16 w-full bg-bgColor md:bg-transparent overflow-hidden"
->	
+	class="fixed left-0 top-0 z-20 flex h-16 w-full items-center overflow-hidden bg-bgColor px-4 md:relative md:bg-transparent md:px-0"
+>
 	<div class="w-full justify-between sm:flex-col">
 		<div class="flex items-center gap-x-2">
 			<a
@@ -16,16 +16,18 @@ import { Icon } from "astro-icon/components";
 				aria-current={Astro.url.pathname === "/" ? "page" : false}
 				class="group flex h-8 items-center hover:filter-none sm:relative"
 				href="/"
-			>					
-				<strong class="italic font-regular md:font-medium text-accent-two xs:block mb-0.5 md:text-xl hover:text-accent-one">
+			>
+				<strong
+					class="font-regular mb-0.5 italic text-accent-two hover:text-accent-one xs:block md:text-xl md:font-medium"
+				>
 					{siteConfig.title}
 				</strong>
 			</a>
 			<nav
 				aria-label="Main menu"
-				class="top-20 text-sm mx-auto ml-4 ml-auto hidden flex-col items-end justify-center gap-x-4 rounded-md bg-bgColor font-medium text-accent-two shadow backdrop-blur group-[.menu-open]:z-50 group-[.menu-open]:flex sm:static sm:z-auto sm:flex-row sm:items-center sm:rounded-none sm:bg-transparent sm:shadow-none sm:backdrop-blur-none md:flex"
+				class="top-20 mx-auto ml-4 ml-auto hidden flex-col items-end justify-center gap-x-4 rounded-md bg-bgColor text-sm font-medium text-accent-two shadow backdrop-blur group-[.menu-open]:z-50 group-[.menu-open]:flex sm:static sm:z-auto sm:flex-row sm:items-center sm:rounded-none sm:bg-transparent sm:shadow-none sm:backdrop-blur-none md:flex"
 				id="main-navigation-menu"
-			>	
+			>
 				<!--				
 				<a
 					aria-current={Astro.url.pathname === "/" ? "page" : false}
@@ -64,7 +66,7 @@ import { Icon } from "astro-icon/components";
 						</a>
 					))
 				}
-				
+
 				<!-- Dropdown menu button for large screens. Needs improvement. -->
 				<!--
 				<button
@@ -79,7 +81,7 @@ import { Icon } from "astro-icon/components";
 				</button>
 				-->
 			</nav>
-			
+
 			<!-- Dropdown menu for large screens. Needs improvement. -->
 			<!--
 			<div id="menu" class="absolute left-0 right-0 w-fit ml-auto top-16 z-10 hidden" aria-hidden="true">
@@ -117,17 +119,17 @@ import { Icon } from "astro-icon/components";
 			-->
 
 			<div class="ml-auto w-fit">
-				<div id="buttons-panel" class="top-4 md:top-8 -ml-[4.5rem] flex space-x-2">
+				<div id="buttons-panel" class="top-4 -ml-[4.5rem] flex space-x-2 md:top-8">
 					<Search />
 					<ThemeToggle />
 				</div>
-			</div>	
-			
+			</div>
+
 			<mobile-button
 				aria-expanded="false"
 				aria-haspopup="menu"
 				aria-label="Open main menu"
-				class="group relative h-8 w-8 rounded-lg bg-color-100 hover:bg-accent-base/10 text-accent-base md:invisible md:hidden"
+				class="group relative h-8 w-8 rounded-lg bg-color-100 text-accent-base hover:bg-accent-base/10 md:invisible md:hidden"
 				id="toggle-nav-menu-mobile"
 				type="button"
 			>
@@ -154,10 +156,10 @@ import { Icon } from "astro-icon/components";
 	<div
 		id="drawer-body"
 		class="absolute inset-0 -translate-y-full transform bg-bgColor transition-all duration-300 ease-in-out"
-	>		
+	>
 		<nav
 			aria-label="Mobile navigation menu"
-			class="text-lg absolute inset-0 flex flex-col items-center justify-center gap-y-4 text-center font-medium text-accent-two"
+			class="absolute inset-0 flex flex-col items-center justify-center gap-y-4 text-center text-lg font-medium text-accent-two"
 			id="nav-menu-mobile"
 		>
 			{
@@ -229,6 +231,3 @@ import { Icon } from "astro-icon/components";
 		});
 	});
 </script>
-
-
-
