@@ -15,5 +15,9 @@ module.exports = {
 			},
 		},
 	],
-	plugins: ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
+	plugins: [
+		"prettier-plugin-astro",
+		"prettier-plugin-tailwindcss", // Must be last
+	],
+	tailwindStylesheet: "./styles/global.css",
 };
