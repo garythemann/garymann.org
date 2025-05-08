@@ -6,6 +6,7 @@ import Masthead from "@/components/note/Masthead.astro";
 import BaseLayout from "@/layouts/Base.astro";
 import { getAllNotes } from "@/data/note";
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import ScrollToTop from "@/components/atoms/ScrollToTop.astro";
 
 // If you're using an adaptor in SSR mode, getStaticPaths wont work -> https://docs.astro.build/en/guides/routing/#modifying-the-slug-example-for-ssr
 export const getStaticPaths = (async () => {
@@ -35,6 +36,8 @@ const { Content } = await render(note);
 
 	<Masthead content={note} />
 
+	<ScrollToTop />
+
 	<div class="mt-6 flex gap-x-8 sm:grid-cols-[auto_1fr] md:items-start">
 		<article class="grid flex-grow grid-cols-1 break-words pt-4" data-pagefind-body>
 			<div class="max-w-none flex-grow">
@@ -48,6 +51,8 @@ const { Content } = await render(note);
 
 		<!-- TODO Headings nav would go here -->
 	</div>
+
+	<script src="@/components/atoms/CopyCode.client.ts"></script>
 </BaseLayout>
 
 <script>
