@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, render } from "astro:content";
+import { type CollectionEntry } from "astro:content";
 import FormattedDate from "@/components/FormattedDate.astro";
 import type { HTMLTag, Polymorphic } from "astro/types";
 
@@ -8,7 +8,6 @@ type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
 };
 
 const { as: Tag = "div", note } = Astro.props;
-const { Content } = await render(note)
 ---
 
 <article
@@ -42,7 +41,7 @@ const { Content } = await render(note)
 	<div
 		class="prose prose-citrus mt-4 line-clamp-4 max-w-none [&>blockquote:not(:first-of-type)]:hidden [&>blockquote]:mb-0 [&>blockquote]:line-clamp-4 [&>p:last-of-type]:mb-0"
 	>
-		<Content />
+		{note.rendered?.metadata?.frontmatter?.excerpt}
 	</div>
 </article>
 <script>
