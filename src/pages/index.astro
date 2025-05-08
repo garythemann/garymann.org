@@ -7,6 +7,7 @@ import { getAllPosts } from "@/data/post";
 import { getAllNotes } from "@/data/note";
 import PageLayout from "@/layouts/Base.astro";
 import { collectionDateSort } from "@/utils/date";
+import { Icon } from "astro-icon/components";
 
 // Posts
 const MAX_POSTS = 10;
@@ -28,9 +29,15 @@ const latestNotes = allNotes.sort(collectionDateSort).slice(0, MAX_NOTES);
 
 	<!-- Posts Section -->
 	<section aria-label="Blog post list" class="'mt-[-100vh] pt-[100vh]'">
-		<h2 class="title mb-6 text-xl text-accent-two">
-			<a href="/writing/">Writing</a>
+		<h2 class="title text-xl text-accent-two">
+			<a class="underline-offset-2 hover:underline" href="/writing/">Writing</a>
 		</h2>
+		<h3 class="mb-6 text-sm text-lighter">
+			Sometimes I opine on my intellectual and ideological commitments
+			<a href="/writing/#disclaimer" title="Disclaimer" class="align-super text-xs text-accent-two"
+				>&sect;</a
+			>
+		</h3>
 		<ul class="space-y-4 md:space-y-2" role="list">
 			{
 				allPostsByDate.map((p) => (
@@ -40,21 +47,48 @@ const latestNotes = allNotes.sort(collectionDateSort).slice(0, MAX_NOTES);
 				))
 			}
 		</ul>
+		<div class="mt-6">
+			<a class="font-medium text-accent hover:text-accent-two" href="/writing/">
+				View all Writing
+				<Icon
+					aria-hidden="true"
+					class="inline-block h-6 w-6"
+					focusable="false"
+					name="mdi:arrow-right-thin"
+				/>
+			</a>
+		</div>
 	</section>
 
 	<!-- Notes Section -->
 	{
 		latestNotes.length > 0 && (
 			<section class="mt-12">
-				<h2 class="title mb-6 text-accent-two">
-					<a href="/notes/">Notes</a>
+				<h2 class="title text-xl text-accent-two">
+					<a class="underline-offset-2 hover:underline" href="/notes/">
+						Notes
+					</a>
 				</h2>
+				<h3 class="mb-6 text-sm text-lighter">
+					An assortment of thoughts on how to utilize technology
+				</h3>
 				<div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
 					{latestNotes.map((note) => (
 						<div>
 							<NotePreview note={note} as="h4" />
 						</div>
 					))}
+				</div>
+				<div class="mt-6">
+					<a class="font-medium text-accent hover:text-accent-two" href="/notes/">
+						View all Notes
+						<Icon
+							aria-hidden="true"
+							class="inline-block h-6 w-6"
+							focusable="false"
+							name="mdi:arrow-right-thin"
+						/>
+					</a>
 				</div>
 			</section>
 		)

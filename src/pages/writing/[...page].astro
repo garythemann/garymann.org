@@ -59,6 +59,12 @@ const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
 			<Icon aria-hidden="true" class="h-6 w-6" focusable="false" name="mdi:rss" />
 		</a>
 	</h1>
+	<h2 class="mb-6 text-sm text-lighter">
+		Sometimes I opine on my intellectual and ideological commitments
+		<a href="/writing/#disclaimer" title="Disclaimer" class="align-super text-xs text-accent-two"
+			>&sect;</a
+		>
+	</h2>
 	<div class="grid gap-y-8 sm:grid-cols-[1fr_auto] sm:gap-x-8">
 		<section aria-label="Blog post list" class="grow">
 			{
@@ -119,5 +125,15 @@ const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
 			)
 		}
 	</div>
+
 	<Pagination {...paginationProps} />
+
+	<div class="mt-6 sm:mt-8">
+		<p class="outline-(--theme-color-250) flex p-2 text-xs target:outline-dashed" id="disclaimer">
+			<span class="mr-4 inline-block">&sect;</span>
+			The content on this site reflects my own opinion and not necessarily those of any employer. Links
+			from this site don't constitute endorsements, and I disclaim any responsibility for the accuracy
+			or suitability for any purpose of any content posted by any third party.
+		</p>
+	</div>
 </PageLayout>

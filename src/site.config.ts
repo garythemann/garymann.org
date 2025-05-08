@@ -1,5 +1,12 @@
 import type { SiteConfig } from "@/types";
 
+type Link = { path: string; title: string; icon?: string };
+type LinkGroup = {
+	name: string;
+	className?: string;
+	links: Link[];
+};
+
 export const siteConfig: SiteConfig = {
 	// Used as both a meta property (src/components/BaseHead.astro L:31 + L:49) & the generated satori png (src/pages/og-image/[slug].png.ts)
 	author: "Gary Mann",
@@ -38,7 +45,7 @@ export const menuLinks: { path: string; title: string }[] = [
 	},
 ];
 
-export const socialLinks: { path: string; title: string; icon?: string }[] = [
+export const socialLinks: Link[] = [
 	{
 		path: "https://github.com/garythemann",
 		title: "GitHub",
@@ -51,15 +58,38 @@ export const socialLinks: { path: string; title: string; icon?: string }[] = [
 	},
 ];
 
-export const footerLinks: { path: string; title: string; icon?: string }[] = [
+export const footerLinks: LinkGroup[] = [
 	{
-		path: "/",
-		title: "Home",
+		className: "font-semibold",
+		links: [
+			{
+				path: "/",
+				title: "Home",
+			},
+			...menuLinks,
+		],
 	},
-	...menuLinks,
 	{
-		path: "/colophon",
-		title: "Colophon",
+		links: [
+			...socialLinks,
+			{
+				path: "/rss.xml",
+				title: "Updates (RSS)",
+				icon: "mdi:rss",
+			},
+		],
 	},
-	...socialLinks,
+	{
+		className: "text-xs",
+		links: [
+			{
+				path: "/colophon",
+				title: "Colophon",
+			},
+			{
+				path: "/writing#disclaimer",
+				title: "Disclaimer",
+			},
+		],
+	},
 ];

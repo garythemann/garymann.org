@@ -6,27 +6,30 @@ const year = new Date().getFullYear();
 ---
 
 <footer
-	class="mt-auto flex w-full flex-col items-center justify-center gap-y-2 pb-4 pt-8 text-center align-top text-accent sm:flex-row sm:justify-between sm:text-sm"
+	class="mt-auto flex w-full flex-col items-center justify-center gap-y-4 pb-4 pt-8 text-center align-top text-accent sm:flex-row sm:justify-between sm:text-sm"
 >
 	<div class="me-0 sm:me-4">
 		<span class="text-xs">&copy;</span>
 		{year}
 		{siteConfig.author}
 	</div>
-	<nav
-		aria-label="More on this site"
-		class="flex flex-wrap items-center justify-between gap-x-2 gap-y-2 font-semibold text-light"
-	>
-		{
-			footerLinks.map((link) => (
-				<a class="underline-offset-2 hover:text-accent hover:underline" href={link.path}>
-					{link.icon ? (
-						<Icon aria-hidden="true" class="h-6 w-6" focusable="false" name={link.icon} />
-					) : (
-						link.title
-					)}
-				</a>
-			))
-		}
-	</nav>
+	{
+		footerLinks.map((linkGroup) => (
+			<nav
+				aria-label="More on this site"
+				class="flex flex-wrap items-center justify-between gap-x-2 gap-y-2 text-light"
+				class:list={linkGroup.className}
+			>
+				{linkGroup.links.map((link) => (
+					<a class="underline-offset-2 hover:text-accent hover:underline" href={link.path}>
+						{link.icon ? (
+							<Icon aria-hidden="true" class="h-6 w-6" focusable="false" name={link.icon} />
+						) : (
+							link.title
+						)}
+					</a>
+				))}
+			</nav>
+		))
+	}
 </footer>
