@@ -6,3 +6,8 @@
 	mask-size: contain;
 	background-color: currentColor;
 }
+
+.footnotes > h2 {
+	@apply inline-block border-b text-transparent;
+	border-color: var(--theme-color-400);
+}

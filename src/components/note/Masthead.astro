@@ -15,7 +15,12 @@ const { content } = Astro.props;
 const { publishDate, tags, title, description, draft } = content.data;
 ---
 
-<div class="flex items-end md:sticky md:top-8 md:z-10">
+<div class="flex items-center md:sticky md:top-8 md:z-10">
+	<div
+		class="font-xs ml-2 mr-2 border border-accent-two p-1 font-semibold uppercase text-accent-two"
+	>
+		Note
+	</div>
 	<h1
 		class="title ml-2 line-clamp-none md:sticky md:top-4 md:z-20 md:line-clamp-1 md:max-w-[calc(100%-10rem)]"
 		title={title}
