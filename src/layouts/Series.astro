@@ -38,13 +38,6 @@ const { headings } = await render(series);
 				name="solar:notes-bold"
 			/>
 		</button>
-		<button
-			id="toggle-toc"
-			class="z-30 mr-2 hidden h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-accent-base/10 text-accent-base hover:text-accent-base/90 md:flex"
-			aria-label="Table of Contents"
-		>
-			<Icon aria-hidden="true" class="h-6 w-6" focusable="false" name="solar:clipboard-list-bold" />
-		</button>
 
 		<h1
 			class="title line-clamp-none md:sticky md:top-4 md:z-20 md:line-clamp-1 md:max-w-lg lg:max-w-xl"
@@ -66,10 +59,7 @@ const { headings } = await render(series);
 		</article>
 		{
 			!!headings.length && (
-				<aside
-					id="toc-panel"
-					class="sticky z-10 hidden rounded-lg md:top-20 md:block md:w-[16rem] md:min-w-[16rem]"
-				>
+				<aside class="sticky z-10 hidden rounded-lg md:top-20 md:block md:w-[16rem] md:min-w-[16rem]">
 					<TOC headings={headings} />
 				</aside>
 			)
@@ -197,71 +187,6 @@ const { headings } = await render(series);
 		closePanelBtn.addEventListener("click", hidePanel);
 	} else {
 		console.error(" close-panel  ");
-	}
-</script>
-
-<script>
-	//
-	const toggleTocBtn = document.getElementById("toggle-toc");
-	const closeTocBtn = document.getElementById("close-toc");
-	const tocPanel = document.getElementById("toc-panel");
-	const toggleTocMobileBtn = document.getElementById("toggle-toc-mobile");
-
-	//    (  )
-	if (!tocPanel) {
-		console.error(" toc-panel  ");
-		throw new Error("toc-panel is required");
-	}
-
-	//   ,
-	const isTocVisible = () => {
-		const isScreenMd = window.matchMedia("(min-width: 768px)").matches;
-		return (
-			(isScreenMd && tocPanel.classList.contains("md:block")) ||
-			(!isScreenMd && !tocPanel.classList.contains("hidden"))
-		);
-	};
-
-	//
-	const hideToc = () => {
-		tocPanel.classList.add("hidden");
-		tocPanel.classList.remove("md:block");
-	};
-
-	//
-	const showToc = () => {
-		tocPanel.classList.remove("hidden");
-		tocPanel.classList.add("md:block");
-	};
-
-	//
-	const toggleToc = () => {
-		if (isTocVisible()) {
-			hideToc(); //  ,
-		} else {
-			showToc(); //  ,
-		}
-	};
-
-	//
-	if (toggleTocBtn) {
-		toggleTocBtn.addEventListener("click", toggleToc);
-	} else {
-		console.error(" toggle-toc  ");
-	}
-
-	//
-	if (toggleTocMobileBtn) {
-		toggleTocMobileBtn.addEventListener("click", toggleToc);
-	} else {
-		console.error(" toggle-toc-mobile  ");
-	}
-
-	//
-	if (closeTocBtn) {
-		closeTocBtn.addEventListener("click", hideToc);
-	} else {
-		console.error(" close-toc  ");
 	}
 </script>
 

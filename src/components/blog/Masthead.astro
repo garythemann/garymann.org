@@ -53,23 +53,6 @@ const postSeries = seriesId
 		) : null
 	}
 
-	{
-		!!(content.rendered?.metadata?.headings as unknown[] | undefined)?.length && (
-			<button
-				id="toggle-toc"
-				class="hidden h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-accent-base/10 text-accent-base hover:brightness-110 md:flex"
-				aria-label="Table of Contents"
-			>
-				<Icon
-					aria-hidden="true"
-					class="h-6 w-6"
-					focusable="false"
-					name="solar:clipboard-list-bold"
-				/>
-			</button>
-		)
-	}
-
 	<h1
 		class="title ml-2 line-clamp-none md:sticky md:top-4 md:z-20 md:line-clamp-1 md:max-w-[calc(100%-10rem)]"
 		title={title}
