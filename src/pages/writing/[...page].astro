@@ -33,18 +33,8 @@ const meta = {
 };
 
 const paginationProps = {
-	...(page.url.prev && {
-		prevUrl: {
-			text: "← Previous Page",
-			url: page.url.prev,
-		},
-	}),
-	...(page.url.next && {
-		nextUrl: {
-			text: "Next Page →",
-			url: page.url.next,
-		},
-	}),
+	prevUrl: page.url.prev,
+	nextUrl: page.url.next,
 };
 
 const groupedByYear = groupPostsByYear(page.data);
