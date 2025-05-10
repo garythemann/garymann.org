@@ -1,0 +1,48 @@
+---
+import { socialLinks, siteConfig } from "@/site.config";
+import { Icon } from "astro-icon/components";
+import ThemeToggle from "@/components/ThemeToggle.astro";
+import Separator from "./Separator.astro";
+---
+
+<div class="mx-20 my-20 grid grid-cols-1 gap-y-8">
+	<div class="text-5xl italic tracking-tight text-accent-two">Gary Mann</div>
+
+	<div>
+		<nav class="flex flex-wrap items-center gap-x-2 gap-y-2 text-light">
+			{
+				socialLinks.map((link) => (
+					<a class="hover:text-accent" href={link.path}>
+						{link.icon ? (
+							<Icon aria-hidden="true" class="h-12 w-12" focusable="false" name={link.icon} />
+						) : (
+							link.title
+						)}
+					</a>
+				))
+			}
+			<span class="flex-grow"></span>
+			<ThemeToggle />
+		</nav>
+	</div>
+
+	<p class="text-xl/9">
+		I'm Gary, a polyglot software engineer who's tinkered in <ins
+			class="border-b-4 border-accent-two italic no-underline">everything from Ada to Zig</ins
+		> with a keen interest in programming language theory. But my passion about software is highly practical:
+		the
+		<ins class="border-b-4 border-accent-two italic no-underline">unique superpower</ins> it provides
+		to empower people and solve business problems.
+	</p>
+
+	<p class="leading-6">
+		My primary professional interest is in large scale distributed systems and data, and my current
+		programming languages of choice are <strong>Go</strong> and <strong>Python</strong>, though I've
+		worked professionally in <strong>C#</strong>,
+		<strong>Java</strong>, and <strong>Ruby on Rails</strong>, and designed numerous websites&mdash;<em
+			>like this one!</em
+		>&mdash;in many, <em>many</em> different iterations of web frameworks of the years.
+	</p>
+
+	<p>I think a lot about the future of the internet and the environment.</p>
+</div>
