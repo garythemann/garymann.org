@@ -1,0 +1,36 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+	heading: string;
+	subheading: string;
+	disclaimer?: string;
+	rssFeed: string;
+}
+
+const { heading, subheading, disclaimer, rssFeed } = Astro.props;
+---
+
+<div>
+	<div class="stipple -ml-4 h-40"></div>
+	<h1 class="stipple title -ml-4 mb-6 flex items-center pb-4 pl-2">
+		<span class="bg-bgColor p-2" slot="heading">
+			{heading}
+		</span>
+
+		<a class="bg-bgColor p-3 text-accent-two" href={rssFeed}>
+			<span class="sr-only">RSS feed</span>
+			<Icon aria-hidden="true" class="h-6 w-6" focusable="false" name="mdi:rss" />
+		</a>
+	</h1>
+	<h2 class="mb-6 text-sm text-lighter">
+		{subheading}
+		{
+			disclaimer && (
+				<a href={disclaimer} title="Disclaimer" class="align-super text-xs text-accent-two">
+					&sect;
+				</a>
+			)
+		}
+	</h2>
+</div>

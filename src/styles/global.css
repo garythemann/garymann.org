@@ -200,6 +200,13 @@
 		@apply relative;
 	}
 	*/
+
+	.stipple {
+		background-image:
+			radial-gradient(var(--theme-color-900) 0.5px, transparent 0.5px),
+			radial-gradient(var(--theme-color-900) 0.5px, transparent 0.5px);
+		background-size: 5px 5px;
+	}
 }
 
 :root {
