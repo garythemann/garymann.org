@@ -12,7 +12,7 @@
 
 		/***   (, , , ) ***/
 		/*  -  */
-		--hue: 200deg; /*   -   */
+		--hue: 165deg; /*   -   */
 		--saturation: 10%; /*     , 0% -    */
 
 		/*  (background) */
@@ -21,9 +21,9 @@
 		--bg-brightness: 96%; /*  , 100% -   */
 
 		/*  */
-		--theme-accent-base: var(--bg-hue) 53% 27%; /*    */
+		--theme-accent-base: var(--bg-hue) 100% 10%;
 		--theme-accent-one: var(--bg-hue) 53% 27%; /*     */
-		--theme-accent-two: 351deg 66% 48%; /*     */
+		--theme-accent-two: 252deg 50% 43%;
 
 		/*  */ /* --theme-accent-two: 344deg 63% 45%; */
 
@@ -72,8 +72,8 @@
 
 		/***   (, , , ) ***/
 		/*  -  */
-		--hue: 200deg; /*   -   */
-		--saturation: 53%; /*     , 0% -    */
+		--hue: 240deg; /*   -   */
+		--saturation: 28%; /*     , 0% -    */
 
 		/*  (background) */
 		--bg-hue: var(--hue); /* -  */
@@ -84,8 +84,8 @@
 
 		/*  */
 		--theme-accent-base: var(--hue) 10% 85%;
-		--theme-accent-one: 50deg 49% 80%; /*     */
-		--theme-accent-two: 50deg 72% 63%; /* 50deg 72% 63% */ /*     ( 45deg 80% 50%) */
+		--theme-accent-one: 72deg 49% 80%; /*     */
+		--theme-accent-two: 72deg 72% 63%; /* 50deg 72% 63% */ /*     ( 45deg 80% 50%) */
 		/* --theme-accent-two: 0deg 75% 89%; */
 		/* --theme-accent-base: var(--hue) 97% 71%; */
 
