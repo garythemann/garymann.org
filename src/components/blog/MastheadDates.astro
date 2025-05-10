@@ -19,12 +19,12 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 
 <div class="flex flex-wrap items-center text-lighter text-sm mt-[1.0625rem] mx-2 mb-2">
 	<span class="flex items-center h-[1.75rem]">
-		<Icon aria-hidden="true" class="flex items-center h-4 w-4 me-1" focusable="false" name="hugeicons:calendar-03" />
+		<Icon aria-hidden="true" class="flex items-center h-4 w-4 me-1" focusable="false" name="ei:calendar" />
 		<FormattedDate date={publishDate} dateTimeOptions={dateTimeOptions} class="flex flex-shrink-0" />
 	</span>
 	<Separator type="dot" />
 	<span class="flex items-center h-[1.75rem]">
-		<Icon aria-hidden="true" class="flex items-center inline-block h-4 w-4 me-1" focusable="false" name="hugeicons:book-open-01" />
+		<Icon aria-hidden="true" class="flex items-center inline-block h-4 w-4 me-1" focusable="false" name="mdi:book-open-blank-variant-outline" />
 		{readingTime ? `${readingTime}` : "Less than one minute read"}
 	</span>
 	{

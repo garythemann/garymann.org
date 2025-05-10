@@ -26,16 +26,11 @@ const { headings } = await render(series);
 			aria-label="Toggle Series Panel"
 			aria-controls="series-panel"
 		>
-			{
-				/*
-			<Icon aria-hidden="true" class="h-6 w-6" focusable="false" name="hugeicons:sidebar-left" />
-			*/
-			}
 			<Icon
 				aria-hidden="true"
 				class="h-6 w-6 flex-shrink-0"
 				focusable="false"
-				name="solar:notes-bold"
+				name="mdi:bookmark-multiple"
 			/>
 		</button>
 
@@ -102,7 +97,7 @@ const { headings } = await render(series);
 		<span
 			class="absolute inset-0 flex items-center justify-center rounded-lg bg-special-light hover:text-accent-base/90"
 		>
-			<Icon class="size-8" name="solar:notes-bold" />
+			<Icon class="size-8" name="mdi:bookmark-multiple" />
 		</span>
 	</mobile-button>
 </BaseLayout>
