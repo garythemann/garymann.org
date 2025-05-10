@@ -98,7 +98,8 @@ export default {
 			fontFamily: {
 				// Add any custom fonts here
 				sans: ["Default Sans", ...fontFamily.sans],
-				serif: ["CascadiaCode", ...fontFamily.serif],
+				serif: ["DM Serif Display", ...fontFamily.serif],
+				mono: ["CascadiaCode", ...fontFamily.serif],
 			},
 			transitionProperty: {
 				height: "height",
