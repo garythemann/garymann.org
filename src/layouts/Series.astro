@@ -4,6 +4,7 @@ import SeriesPanel from "@/components/SeriesPanel.astro";
 import TOC from "@/components/blog/TOC.astro";
 import { Icon } from "astro-icon/components";
 import BaseLayout from "./Base.astro";
+import ScrollToTop from "@/components/atoms/ScrollToTop.astro";
 
 interface Props {
 	series: CollectionEntry<"series">;
@@ -61,32 +62,7 @@ const { headings } = await render(series);
 		}
 	</div>
 
-	<div class="left-0 right-12 z-50 ml-auto w-fit md:absolute">
-		<button
-			id="to-top-button"
-			class="fixed bottom-14 flex h-12 w-12 translate-y-28 items-center justify-center rounded-full border-2 border-special-lighter bg-bgColor text-3xl text-light drop-shadow-xl transition-all duration-300 hover:text-accent-two data-[show=true]:translate-y-0 data-[show=true]:opacity-100"
-			aria-label="Back to Top"
-			data-show="false"
-		>
-			<span
-				class="absolute inset-0 flex items-center justify-center rounded-full bg-special-light"
-				aria-hidden="true"
-			>
-				<svg
-					class="h-6 w-6"
-					fill="none"
-					focusable="false"
-					stroke="currentColor"
-					stroke-width="2"
-					viewBox="0 0 24 24"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<path d="M4.5 15.75l7.5-7.5 7.5 7.5" stroke-linecap="round" stroke-linejoin="round"
-					></path>
-				</svg>
-			</span>
-		</button>
-	</div>
+	<ScrollToTop />
 
 	<mobile-button
 		id="toggle-panel-mobile"
@@ -170,23 +146,4 @@ const { headings } = await render(series);
 	} else {
 		console.error(" close-panel  ");
 	}
-</script>
-
-<script>
-	const scrollBtn = document.getElementById("to-top-button") as HTMLButtonElement;
-	const targetHeader = document.querySelector("header") as HTMLElement;
-
-	function callback(entries: IntersectionObserverEntry[]) {
-		entries.forEach((entry) => {
-			// Show the scroll to top button when the <header> is out of view
-			scrollBtn.dataset.show = (!entry.isIntersecting).toString();
-		});
-	}
-
-	scrollBtn.addEventListener("click", () => {
-		document.documentElement.scrollTo({ behavior: "smooth", top: 0 });
-	});
-
-	const observer = new IntersectionObserver(callback);
-	observer.observe(targetHeader);
 </script>

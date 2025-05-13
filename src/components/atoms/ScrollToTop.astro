@@ -1,3 +1,7 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
 <div class="left-0 right-12 z-50 ml-auto w-fit md:absolute">
 	<button
 		id="to-top-button"
@@ -9,17 +13,7 @@
 			class="absolute inset-0 flex items-center justify-center rounded-full bg-special-lighter"
 			aria-hidden="true"
 		>
-			<svg
-				class="h-6 w-6"
-				fill="none"
-				focusable="false"
-				stroke="currentColor"
-				stroke-width="2"
-				viewBox="0 0 24 24"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<path d="M4.5 15.75l7.5-7.5 7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
-			</svg>
+			<Icon class="h-6 w-6" focusable="false" name="ei:chevron-up" />
 		</span>
 	</button>
 </div>
