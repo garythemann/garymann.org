@@ -14,7 +14,7 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const { ogImage, title, description, updatedDate, publishDate, seriesId } = post.data;
+const { ogImage, title, description, updatedDate, publishDate, seriesId, className } = post.data;
 
 const socialImage = ogImage ?? `/og-image/${post.id}.png`;
 const articleDate = updatedDate?.toISOString() ?? publishDate.toISOString();
@@ -42,6 +42,7 @@ const { headings } = await render(post);
 		<article class="grid flex-grow grid-cols-1 break-words pt-4" data-pagefind-body>
 			<div
 				class="prose prose-citrus max-w-none flex-grow prose-headings:font-semibold prose-headings:text-accent-base prose-headings:before:text-accent-two"
+				class:list={[className]}
 			>
 				<slot />
 			</div>
