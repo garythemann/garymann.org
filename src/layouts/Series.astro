@@ -173,20 +173,6 @@ const { headings } = await render(series);
 </script>
 
 <script>
-	//
-	document.addEventListener("DOMContentLoaded", () => {
-		const buttonsPanel = document.getElementById("buttons-panel");
-
-		if (buttonsPanel) {
-			buttonsPanel.classList.add("fixed");
-			console.log(" 'fixed'    buttons-panel.");
-		} else {
-			console.error("  ID 'buttons-panel'  .");
-		}
-	});
-</script>
-
-<script>
 	const scrollBtn = document.getElementById("to-top-button") as HTMLButtonElement;
 	const targetHeader = document.querySelector("header") as HTMLElement;
 
