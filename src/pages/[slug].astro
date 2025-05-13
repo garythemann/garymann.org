@@ -24,6 +24,7 @@ const meta = {
 	description: article.data.description || "",
 	title: article.data.title,
 };
+const { title, className } = article.data;
 
 const { Content } = await render(article);
 ---
@@ -35,9 +36,10 @@ const { Content } = await render(article);
 		<article class="grid flex-grow grid-cols-1 break-words pt-4" data-pagefind-body>
 			<div
 				class="prose prose-citrus max-w-none flex-grow prose-headings:font-semibold prose-headings:text-accent-base prose-headings:before:text-accent-two"
+				class:list={className}
 			>
-				<h1 class="title" title={article.data.title} data-pagefind-body>
-					{article.data.title}
+				<h1 class="title" title={title} data-pagefind-body>
+					{title}
 				</h1>
 
 				<Content />

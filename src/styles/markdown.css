@@ -7,6 +7,10 @@
 	background-color: currentColor;
 }
 
+.quiet-external-links .external-link {
+	display: none;
+}
+
 .footnotes > h2 {
 	@apply inline-block border-b text-transparent;
 	border-color: var(--theme-color-400);
