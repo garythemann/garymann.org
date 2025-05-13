@@ -160,29 +160,29 @@
 	}
 
 	h1.display {
-		@apply font-serif font-normal !important;
+		@apply font-serif font-normal;
 		font-weight: 400;
 		font-size: 2.4rem;
 		line-height: 2.2rem;
 	}
 
 	h1 {
-		@apply text-2xl md:pt-[0.0rem] !important;
+		@apply text-2xl md:pt-[0.0rem];
 	}
 	h2 {
-		@apply text-xl md:pt-[0.215rem] !important;
+		@apply text-xl md:pt-[0.215rem];
 	}
 	h3 {
-		@apply text-lg md:pt-[0.250rem] !important; /*  0.260 !!! */
+		@apply text-lg md:pt-[0.250rem];
 	}
 	h4 {
-		@apply text-base md:pt-[0.425rem] !important;
+		@apply text-base md:pt-[0.425rem];
 	}
 	h5 {
-		@apply text-base md:pt-[0.425rem] !important;
+		@apply text-base md:pt-[0.425rem];
 	}
 	h6 {
-		@apply text-base md:pt-[0.425rem] !important;
+		@apply text-base md:pt-[0.425rem];
 	}
 
 	h1,
@@ -191,7 +191,7 @@
 	h4,
 	h5,
 	h6 {
-		@apply h-auto min-h-8 !important;
+		@apply h-auto min-h-8;
 	}
 
 	/*        rehype-pretty-code */
