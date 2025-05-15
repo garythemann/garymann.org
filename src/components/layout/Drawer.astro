@@ -1,0 +1,58 @@
+---
+import { menuLinks, socialLinks } from "@/site.config";
+import { Icon } from "astro-icon/components";
+---
+
+<div id="drawer" class="fixed inset-0 z-10 hidden md:backdrop-blur-3xl" aria-hidden="true">
+	<div
+		class="white-space-pre absolute inset-0 flex cursor-default select-none items-center text-[42vh] italic tracking-[-3vh] text-accent-two/25"
+		aria-hidden="false"
+		data-toggle-nav-menu
+	>
+		<span class="ml-[36.19vh]">Gary</span>
+		<span class="ml-[12.5vh]">Mann</span>
+	</div>
+	<div
+		id="drawer-body"
+		class="absolute inset-0 -translate-y-full transform bg-bgColor transition-all duration-300 ease-in-out md:max-w-[30rem] md:drop-shadow-2xl"
+	>
+		<nav
+			aria-label="Main menu"
+			class="absolute inset-0 flex flex-col items-center justify-center gap-y-4 text-center text-lg font-medium text-accent-two"
+			id="nav-menu-mobile"
+		>
+			{
+				menuLinks.map((link) => (
+					<a
+						aria-current={Astro.url.pathname === link.path ? "page" : false}
+						class="underline-offset-2 hover:underline"
+						data-astro-prefetch
+						href={link.path}
+					>
+						{link.title}
+					</a>
+				))
+			}
+			<hr />
+			{
+				socialLinks.map((link) => (
+					<a class="underline-offset-2 hover:underline" href={link.path}>
+						{link.title}
+					</a>
+				))
+			}
+		</nav>
+
+		<mobile-button
+			aria-expanded="true"
+			aria-haspopup="menu"
+			aria-role="button"
+			aria-label="Close main menu"
+			class="absolute right-[1rem] top-[1rem] flex h-8 w-8 cursor-pointer items-center rounded-lg bg-color-100 text-accent-base hover:bg-accent-base/10"
+			data-toggle-nav-menu
+			type="button"
+		>
+			<Icon aria-hidden="true" class="mx-auto h-6 w-6" focusable="false" name="ei:close" />
+		</mobile-button>
+	</div>
+</div>
