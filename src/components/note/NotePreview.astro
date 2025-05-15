@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 import FormattedDate from "@/components/FormattedDate.astro";
 import type { HTMLTag, Polymorphic } from "astro/types";
 
@@ -46,17 +46,16 @@ const { as: Tag = "div", note } = Astro.props;
 </article>
 <script>
 	// Provide button-like affordance to NotePreview
-
 	document.addEventListener("DOMContentLoaded", () => {
-		document.querySelectorAll("[data-article-preview]").forEach((preview) => {
-			let link = preview.querySelector("[data-article-preview-link]"),
-				href = link && link instanceof HTMLAnchorElement && link.href;
+		for (const preview of document.querySelectorAll("[data-article-preview]")) {
+			let link = preview.querySelector("[data-article-preview-link]");
+			let href = link && link instanceof HTMLAnchorElement && link.href;
 			if (href) {
 				preview.classList.add("cursor-pointer");
 				preview.addEventListener("click", async () => {
 					window.location.assign(href);
 				});
 			}
-		});
+		}
 	});
 </script>

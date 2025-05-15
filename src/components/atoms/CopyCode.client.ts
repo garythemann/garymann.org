@@ -1,7 +1,7 @@
 // Wait for the content to fully load
 document.addEventListener("DOMContentLoaded", () => {
 	// Find all pre blocks
-	document.querySelectorAll("pre").forEach((pre) => {
+	for (const pre of document.querySelectorAll("pre")) {
 		// Check if the button already exists
 		if (!pre.querySelector(".copy-code")) {
 			// Create the button
@@ -33,5 +33,5 @@ document.addEventListener("DOMContentLoaded", () => {
 				}
 			});
 		}
-	});
+	}
 });

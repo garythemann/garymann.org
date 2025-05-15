@@ -1,10 +1,10 @@
 ---
 import { type CollectionEntry, render } from "astro:content";
 import SeriesPanel from "@/components/SeriesPanel.astro";
+import ScrollToTop from "@/components/atoms/ScrollToTop.astro";
 import TOC from "@/components/blog/TOC.astro";
 import { Icon } from "astro-icon/components";
 import BaseLayout from "./Base.astro";
-import ScrollToTop from "@/components/atoms/ScrollToTop.astro";
 
 interface Props {
 	series: CollectionEntry<"series">;

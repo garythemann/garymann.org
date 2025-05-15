@@ -25,54 +25,60 @@ if (seriesId) {
 
 <aside
 	id="series-panel"
-	class="hidden grid lg:block z-40 min-h-screen fixed lg:relative `shadow-[5px_0px_10px_rgba(0,0,0,0.05)]` transition-all duration-300 ease-in-out bg-bgColor"
->	
-	<div class="fixed -z-10 top-0 w-screen md:w-72 md:min-w-72 md:max-w-72 h-screen bg-gradient-to-b from-orange-300 via-pink-300 to-purple-300 opacity-30 dark:opacity-0">
+	class="`shadow-[5px_0px_10px_rgba(0,0,0,0.05)]` fixed z-40 grid hidden min-h-screen bg-bgColor transition-all duration-300 ease-in-out lg:relative lg:block"
+>
+	<div
+		class="fixed top-0 -z-10 h-screen w-screen bg-gradient-to-b from-orange-300 via-pink-300 to-purple-300 opacity-30 dark:opacity-0 md:w-72 md:min-w-72 md:max-w-72"
+	>
 	</div>
-	
-	<div class="flex h-full flex-col px-8 pt-4 md:pt-8 w-screen md:w-72 md:min-w-72 md:max-w-72 bg-accent-base/5 border-r border-special-light">
+
+	<div
+		class="flex h-full w-screen flex-col border-r border-special-light bg-accent-base/5 px-8 pt-4 md:w-72 md:min-w-72 md:max-w-72 md:pt-8"
+	>
 		<div class="flex gap-x-1">
-			<div class="flex-grow max-width">
-			</div>
+			<div class="max-width flex-grow"></div>
 
-		<button
-			id="close-panel"
-			class="md:top-8 md:right-8 h-8 w-8 flex items-center justify-center rounded-lg bg-accent-base/5 text-accent-base hover:bg-accent-base/10"
-			aria-label="Close Series Panel"
-		>
-			<Icon class="h-6 w-6" name="ei:close" />
-		</button>
-
+			<button
+				id="close-panel"
+				class="flex h-8 w-8 items-center justify-center rounded-lg bg-accent-base/5 text-accent-base hover:bg-accent-base/10 md:right-8 md:top-8"
+				aria-label="Close Series Panel"
+			>
+				<Icon class="h-6 w-6" name="ei:close" />
+			</button>
 		</div>
 		<div class="sticky top-8">
-			<div class="uppercase flex items-center title text-sm mt-4 mb-2">
-				A series on
-			</div>
-			{postsSeries.id ? (
-				<a 
-					href={`/series/${postsSeries.id}`} 
-					aria-label={`About ${postsSeries.data.title} series`}
-					class="sticky top-4 flex h-8 w-full items-center justify-center gap-x-1 rounded-lg shadow-lg bg-accent-base font-medium text-bgColor hover:brightness-110 transition-all duration-300"
-				>
-					{postsSeries.data.title}
-				</a>
+			<div class="title mb-2 mt-4 flex items-center text-sm uppercase">A series on</div>
+			{
+				postsSeries.id ? (
+					<>
+						<a
+							href={`/series/${postsSeries.id}`}
+							aria-label={`About ${postsSeries.data.title} series`}
+							class="sticky top-4 flex h-8 w-full items-center justify-center gap-x-1 rounded-lg bg-accent-base font-medium text-bgColor shadow-lg transition-all duration-300 hover:brightness-110"
+						>
+							{postsSeries.data.title}
+						</a>
 
-				<ul class="mt-[1.0625rem] text-sm font-medium text-light">
-					{seriesPosts.map((p) => {
-						const isActive = currentPath === `/writing/${p.id}/`;
-						return (
-							<li class={`px-4 flex items-center line-clamp-2 pt-1 pb-1 ${isActive ? "rounded-lg bg-color-100" : ""}`}>
-								<a
-									href={`/writing/${p.id}/`}
-									class={`hover:text-accent-two ${isActive ? "text-accent cursor-default pointer-events-none" : ""}`}
-								>
-									{p.data.title}
-								</a>
-							</li>
-						);
-					})}
-				</ul>
-			) : null}
+						<ul class="mt-[1.0625rem] text-sm font-medium text-light">
+							{seriesPosts.map((p) => {
+								const isActive = currentPath === `/writing/${p.id}/`;
+								return (
+									<li
+										class={`line-clamp-2 flex items-center px-4 pb-1 pt-1 ${isActive ? "rounded-lg bg-color-100" : ""}`}
+									>
+										<a
+											href={`/writing/${p.id}/`}
+											class={`hover:text-accent-two ${isActive ? "pointer-events-none cursor-default text-accent" : ""}`}
+										>
+											{p.data.title}
+										</a>
+									</li>
+								);
+							})}
+						</ul>
+					</>
+				) : null
+			}
 		</div>
 	</div>
 </aside>

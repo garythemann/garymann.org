@@ -2,11 +2,11 @@
 import { render } from "astro:content";
 
 import Backdrop from "@/components/Backdrop.astro";
-import Masthead from "@/components/note/Masthead.astro";
-import BaseLayout from "@/layouts/Base.astro";
-import { getAllNotes } from "@/data/note";
-import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import ScrollToTop from "@/components/atoms/ScrollToTop.astro";
+import Masthead from "@/components/note/Masthead.astro";
+import { getAllNotes } from "@/data/note";
+import BaseLayout from "@/layouts/Base.astro";
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 
 // If you're using an adaptor in SSR mode, getStaticPaths wont work -> https://docs.astro.build/en/guides/routing/#modifying-the-slug-example-for-ssr
 export const getStaticPaths = (async () => {

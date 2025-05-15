@@ -1,9 +1,9 @@
 import DefaultSansLight from "@/assets/fonts/DefaultSans-Light.ttf";
-import DMSerifDisplay from "@fontsource/dm-serif-display/files/dm-serif-display-latin-400-normal.woff";
 import DefaultSansLightItalic from "@/assets/fonts/DefaultSans-LightItalic.ttf";
 import { getAllPosts } from "@/data/post";
 import { siteConfig } from "@/site.config";
 import { getFormattedDate } from "@/utils/date";
+import DMSerifDisplay from "@fontsource/dm-serif-display/files/dm-serif-display-latin-400-normal.woff";
 import { Resvg } from "@resvg/resvg-js";
 import type { APIContext, InferGetStaticPropsType } from "astro";
 import satori, { type SatoriOptions } from "satori";

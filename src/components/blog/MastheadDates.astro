@@ -4,9 +4,9 @@ import { Icon } from "astro-icon/components";
 import Separator from "../Separator.astro";
 
 interface Props {
-	publishDate: Date
-	updatedDate: Date | undefined 
-	readingTime: String | undefined
+	publishDate: Date;
+	updatedDate: Date | undefined;
+	readingTime: string | undefined;
 }
 
 const { publishDate, updatedDate, readingTime } = Astro.props;
@@ -14,25 +14,45 @@ const { publishDate, updatedDate, readingTime } = Astro.props;
 const dateTimeOptions: Intl.DateTimeFormatOptions = {
 	month: "long",
 };
-
 ---
 
-<div class="flex flex-wrap items-center text-lighter text-sm mt-[1.0625rem] mx-2 mb-2">
-	<span class="flex items-center h-[1.75rem]">
-		<Icon aria-hidden="true" class="flex items-center h-4 w-4 me-1" focusable="false" name="ei:calendar" />
-		<FormattedDate date={publishDate} dateTimeOptions={dateTimeOptions} class="flex flex-shrink-0" />
+<div class="mx-2 mb-2 mt-[1.0625rem] flex flex-wrap items-center text-sm text-lighter">
+	<span class="flex h-[1.75rem] items-center">
+		<Icon
+			aria-hidden="true"
+			class="me-1 flex h-4 w-4 items-center"
+			focusable="false"
+			name="ei:calendar"
+		/>
+		<FormattedDate
+			date={publishDate}
+			dateTimeOptions={dateTimeOptions}
+			class="flex flex-shrink-0"
+		/>
 	</span>
 	<Separator type="dot" />
-	<span class="flex items-center h-[1.75rem]">
-		<Icon aria-hidden="true" class="flex items-center inline-block h-4 w-4 me-1" focusable="false" name="mdi:book-open-blank-variant-outline" />
+	<span class="flex h-[1.75rem] items-center">
+		<Icon
+			aria-hidden="true"
+			class="me-1 inline-block flex h-4 w-4 items-center"
+			focusable="false"
+			name="mdi:book-open-blank-variant-outline"
+		/>
 		{readingTime ? `${readingTime}` : "Less than one minute read"}
 	</span>
 	{
 		updatedDate && (
-			<Separator type="dot" />
-			<span class="h-[1.75rem] flex items-center flex-shrink-0 rounded-lg bg-accent-two/5 text-accent-two py-1 px-2 text-sm gap-x-1">
-				Updated:<FormattedDate class="flex flex-shrink-0" date={updatedDate} dateTimeOptions={dateTimeOptions} />
-			</span>
+			<>
+				<Separator type="dot" />
+				<span class="flex h-[1.75rem] flex-shrink-0 items-center gap-x-1 rounded-lg bg-accent-two/5 px-2 py-1 text-sm text-accent-two">
+					Updated:
+					<FormattedDate
+						class="flex flex-shrink-0"
+						date={updatedDate}
+						dateTimeOptions={dateTimeOptions}
+					/>
+				</span>
+			</>
 		)
 	}
 </div>
