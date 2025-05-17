@@ -3,18 +3,22 @@ import { menuLinks, socialLinks } from "@/site.config";
 import { Icon } from "astro-icon/components";
 ---
 
-<div id="drawer" class="fixed inset-0 z-10 hidden md:backdrop-blur-3xl" aria-hidden="true">
-	<div
-		class="white-space-pre absolute inset-0 flex cursor-default select-none items-center text-[42vh] italic tracking-[-3vh] text-accent-two/25"
+<div
+	id="drawer"
+	class="transition-discrete fixed inset-0 z-10 hidden transform opacity-100 transition-all duration-500 aria-hidden:opacity-0 md:backdrop-blur-3xl [&>aside]:scale-[1.0] [&>aside]:aria-hidden:scale-[1.2]"
+	aria-hidden="true"
+>
+	<aside
+		class="white-space-pre absolute inset-0 flex cursor-default select-none items-center text-[42vh] italic tracking-[-3vh] text-accent-two/25 transition-transform delay-100 duration-500"
 		aria-hidden="false"
 		data-toggle-nav-menu
 	>
 		<span class="ml-[36.19vh]">Gary</span>
 		<span class="ml-[12.5vh]">Mann</span>
-	</div>
+	</aside>
 	<div
 		id="drawer-body"
-		class="absolute inset-0 -translate-y-full transform bg-bgColor transition-all duration-300 ease-in-out md:max-w-[30rem] md:drop-shadow-2xl"
+		class="absolute inset-0 bg-bgColor transition-all duration-300 ease-in-out md:max-w-[30rem] md:drop-shadow-2xl"
 	>
 		<nav
 			aria-label="Main menu"

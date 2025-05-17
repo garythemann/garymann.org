@@ -207,6 +207,10 @@
 			radial-gradient(var(--theme-color-900) 0.5px, transparent 0.5px);
 		background-size: 5px 5px;
 	}
+
+	.transition-discrete {
+		transition-behavior: allow-discrete;
+	}
 }
 
 :root {
