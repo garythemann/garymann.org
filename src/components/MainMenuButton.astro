@@ -54,20 +54,30 @@ const { visible } = Astro.props;
 			return;
 		}
 
+		const toggleMainMenu = () => {
+			const isOpen = toggleNavMenuMobileButton.getAttribute("aria-expanded") === "true";
+
+			if (isOpen) {
+				drawer.classList.add("hidden");
+				drawer.setAttribute("aria-hidden", "true");
+			} else {
+				drawer.classList.remove("hidden");
+				drawer.removeAttribute("aria-hidden");
+			}
+
+			toggleNavMenuMobileButton.setAttribute("aria-expanded", (!isOpen).toString());
+		};
+
 		for (const e of [toggleNavMenuMobileButton, ...toggleNavMenuButtons]) {
-			e.addEventListener("click", () => {
-				const isOpen = toggleNavMenuMobileButton.getAttribute("aria-expanded") === "true";
-
-				if (isOpen) {
-					drawer.classList.add("hidden");
-					drawer.setAttribute("aria-hidden", "true");
-				} else {
-					drawer.classList.remove("hidden");
-					drawer.removeAttribute("aria-hidden");
-				}
-
-				toggleNavMenuMobileButton.setAttribute("aria-expanded", (!isOpen).toString());
-			});
+			e.addEventListener("click", toggleMainMenu);
 		}
+
+		document.addEventListener("keydown", (e) => {
+			if (e.key == "Escape") {
+				if (toggleNavMenuMobileButton.getAttribute("aria-expanded") === "true") {
+					toggleMainMenu();
+				}
+			}
+		});
 	});
 </script>
