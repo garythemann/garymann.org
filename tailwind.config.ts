@@ -7,53 +7,10 @@ export default {
 		"./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}",
 		"!./src/pages/og-image/[slug].png.ts",
 	],
-	corePlugins: {
-		// disable some core plugins as they are included in the css, even when unused
-		borderOpacity: false,
-		fontVariantNumeric: false,
-		ringOffsetColor: false,
-		ringOffsetWidth: false,
-		scrollSnapType: false,
-		textOpacity: false,
-		touchAction: false,
-	},
 	darkMode: ["class", '[data-theme="dark"]'],
-	plugins: [
-		require("@tailwindcss/typography"),
-		plugin(({ addComponents }) => {
-			addComponents({
-				".citrus-link": {
-					"&:hover": {
-						"@apply underline underline-offset-2": {},
-					},
-					"@apply no-underline": {},
-				},
-				".data-footnote-backref": {
-					"&:hover": {
-						"@apply no-underline brightness-110": {},
-					},
-					"@apply inline-flex bg-accent-two text-bgColor text-xs h-4 w-4 rounded-sm items-center justify-center":
-						{},
-				},
-			});
-		}),
-	],
-
+	plugins: [require("@tailwindcss/typography")],
 	theme: {
 		extend: {
-			screens: {
-				xs: "320px", // Add xs size
-				// xl: '1200px',
-			},
-			maxWidth: {
-				lg: "32rem", // default 32rem (512px)
-				xl: "36rem", // default 36rem (576px)
-				"2xl": "42rem", // default 42rem (672px)
-				"3xl": "48rem", // default 48rem (768px)
-				"4xl": "54rem", // !!! // default 56rem (896px)
-				"5xl": "64rem", // default 64rem (1024px)
-				"6xl": "76rem", // !!! // default 72rem (1152px)
-			},
 			colors: {
 				color: {
 					950: "var(--theme-color-950)",
@@ -107,7 +64,7 @@ export default {
 				DEFAULT: {
 					css: {
 						a: {
-							"@apply citrus-link": "",
+							"@apply hover:underline underline-offset-2": "",
 						},
 						blockquote: {
 							// "@apply !px-4 md:!px-6 !py-2 !border-s-[0.625rem] rounded-lg border-color-100 bg-color-75": "",
@@ -154,23 +111,6 @@ export default {
 								"@apply text-bgColor": "",
 							},
 						},
-						/*
-            sup: {
-              "@apply ms-0.5": "",
-              a: {
-                "&:after": {
-                  content: "']'",
-                },
-                "&:before": {
-                  content: "'['",
-                },
-                "&:hover": {
-                  "@apply text-link no-underline bg-none": "",
-                },
-                "@apply bg-none": "",
-              },
-            },
-            */
 
 						/* Table */
 						table: {
@@ -179,16 +119,11 @@ export default {
 						"tbody tr": {
 							borderBottomWidth: "none",
 						},
-						tfoot: {
-							// borderTop: "1px dashed #666",
-						},
 						thead: {
 							borderBottomWidth: "none",
 							"@apply bg-color-50": "",
 						},
 						"thead th": {
-							// borderBottom: "1px #666",
-							// fontWeight: "600",
 							"@apply items-center min-h-8": "",
 						},
 						"td, th": {

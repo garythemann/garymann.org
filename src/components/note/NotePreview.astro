@@ -18,7 +18,11 @@ const { as: Tag = "div", note } = Astro.props;
 	<Tag class="flex items-end text-base font-semibold text-accent-base md:sticky md:top-8 md:z-10">
 		{
 			(
-				<a data-article-preview-link class="citrus-link" href={`/notes/${note.id}/`}>
+				<a
+					data-article-preview-link
+					class="underline-offset-2 hover:underline"
+					href={`/notes/${note.id}/`}
+				>
 					{note.data.title}
 				</a>
 			)
