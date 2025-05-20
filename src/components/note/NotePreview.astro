@@ -43,7 +43,7 @@ const { as: Tag = "div", note } = Astro.props;
 	</div>
 
 	<div
-		class="prose prose-citrus mt-4 line-clamp-4 max-w-none [&>blockquote:not(:first-of-type)]:hidden [&>blockquote]:mb-0 [&>blockquote]:line-clamp-4 [&>p:last-of-type]:mb-0"
+		class="prose mt-4 line-clamp-4 max-w-none [&>blockquote:not(:first-of-type)]:hidden [&>blockquote]:mb-0 [&>blockquote]:line-clamp-4 [&>p:last-of-type]:mb-0"
 	>
 		{note.rendered?.metadata?.frontmatter?.excerpt}
 	</div>

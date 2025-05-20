@@ -41,10 +41,7 @@ const { Content } = await render(note);
 	<div class="mt-6 flex gap-x-8 sm:grid-cols-[auto_1fr] md:items-start">
 		<article class="grid flex-grow grid-cols-1 break-words pt-4" data-pagefind-body>
 			<div class="max-w-none flex-grow">
-				<div
-					class="prose prose-citrus mt-4 max-w-none [&>p:last-of-type]:mb-0"
-					class:list={[note.className]}
-				>
+				<div class="prose mt-4 max-w-none [&>p:last-of-type]:mb-0" class:list={[note.className]}>
 					<Content />
 				</div>
 			</div>
