@@ -28,9 +28,6 @@ export default {
 					},
 					"@apply no-underline": {},
 				},
-				".title": {
-					"@apply font-semibold text-accent-base": {},
-				},
 				".data-footnote-backref": {
 					"&:hover": {
 						"@apply no-underline brightness-110": {},

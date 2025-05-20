@@ -85,7 +85,7 @@
 }
 
 #citrus__search .pagefind-ui__result-link {
-	@apply title bg-transparent text-base font-medium text-accent-base;
+	@apply bg-transparent text-base font-medium font-semibold text-accent-base;
 }
 
 #citrus__search .pagefind-ui__result-link:hover {

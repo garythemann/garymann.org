@@ -15,7 +15,7 @@ const { as: Tag = "div", note } = Astro.props;
 	class="inline-grid w-full rounded-lg bg-color-75 px-4 py-2 md:px-8 md:py-4"
 	data-pagefind-body={false}
 >
-	<Tag class="title flex items-end text-base md:sticky md:top-8 md:z-10">
+	<Tag class="flex items-end text-base font-semibold text-accent-base md:sticky md:top-8 md:z-10">
 		{
 			(
 				<a data-article-preview-link class="citrus-link" href={`/notes/${note.id}/`}>
