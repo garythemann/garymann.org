@@ -3,10 +3,10 @@
 }
 
 #citrus__search {
-	--pagefind-ui-primary: theme("colors.accent-two");
-	--pagefind-ui-text: theme("colors.textColor");
-	--pagefind-ui-background: theme("colors.bgColor");
-	--pagefind-ui-border: theme("colors.color.400");
+	--pagefind-ui-primary: hsl(var(--theme-accent-two) / 1);
+	--pagefind-ui-text: var(--theme-text);
+	--pagefind-ui-background: hsl(var(--theme-bg) / 1);
+	--pagefind-ui-border: var(--theme-color-400);
 	@apply h-full;
 }
 
