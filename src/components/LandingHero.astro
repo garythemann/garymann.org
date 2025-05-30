@@ -2,7 +2,7 @@
 import MainMenuButton from "@/components/MainMenuButton.astro";
 import ThemeToggle from "@/components/ThemeToggle.astro";
 import Drawer from "@/components/layout/Drawer.astro";
-import { siteConfig, socialLinks } from "@/site.config";
+import { socialLinks } from "@/site.config";
 import { Icon } from "astro-icon/components";
 ---
 
@@ -14,7 +14,7 @@ import { Icon } from "astro-icon/components";
 		<nav class="flex flex-wrap items-center gap-x-2 gap-y-2 text-light">
 			{
 				socialLinks.map((link) => (
-					<a class="hover:text-accent" href={link.path}>
+					<a class="hover:text-accent" href={link.href}>
 						{link.icon ? (
 							<Icon aria-hidden="true" class="h-12 w-12" focusable="false" name={link.icon} />
 						) : (

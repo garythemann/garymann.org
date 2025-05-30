@@ -21,7 +21,7 @@ const year = new Date().getFullYear();
 				class:list={[linkGroup.className]}
 			>
 				{linkGroup.links.map((link) => (
-					<a class="underline-offset-2 hover:text-accent hover:underline" href={link.path}>
+					<a class="underline-offset-2 hover:text-accent hover:underline" href={link.href}>
 						{link.icon ? (
 							<Icon
 								aria-hidden="true"

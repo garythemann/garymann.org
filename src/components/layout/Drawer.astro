@@ -31,7 +31,7 @@ import { Icon } from "astro-icon/components";
 						aria-current={Astro.url.pathname === link.path ? "page" : false}
 						class="underline-offset-2 hover:underline"
 						data-astro-prefetch
-						href={link.path}
+						href={link.href}
 					>
 						{link.title}
 					</a>
@@ -40,7 +40,7 @@ import { Icon } from "astro-icon/components";
 			<hr />
 			{
 				socialLinks.map((link) => (
-					<a class="underline-offset-2 hover:underline" href={link.path}>
+					<a class="underline-offset-2 hover:underline" href={link.href}>
 						{link.title}
 					</a>
 				))

@@ -1,6 +1,6 @@
 import type { SiteConfig } from "@/types";
 
-type Link = { path: string; title: string; icon?: string };
+type Link = { href: string; title: string; icon?: string };
 type LinkGroup = {
 	name: string;
 	className?: string;
@@ -30,29 +30,29 @@ export const siteConfig: SiteConfig = {
 };
 
 // Used to generate links in both the Header & Footer.
-export const menuLinks: { path: string; title: string }[] = [
+export const menuLinks: { href: string; title: string }[] = [
 	{
-		path: "/",
+		href: "/",
 		title: "About",
 	},
 	{
-		path: "/writing/",
+		href: "/writing/",
 		title: "Writing",
 	},
 	{
-		path: "/notes/",
+		href: "/notes/",
 		title: "Notes",
 	},
 ];
 
 export const socialLinks: Link[] = [
 	{
-		path: "https://github.com/garythemann",
+		href: "https://github.com/garythemann",
 		title: "GitHub",
 		icon: "ei:sc-github",
 	},
 	{
-		path: "https://linkedin.com/in/gzma",
+		href: "https://linkedin.com/in/gzma",
 		title: "LinkedIn",
 		icon: "ei:sc-linkedin",
 	},
@@ -63,7 +63,7 @@ export const footerLinks: LinkGroup[] = [
 		className: "font-semibold",
 		links: [
 			{
-				path: "/",
+				href: "/",
 				title: "Home",
 			},
 			...menuLinks,
@@ -73,7 +73,7 @@ export const footerLinks: LinkGroup[] = [
 		links: [
 			...socialLinks,
 			{
-				path: "/rss.xml",
+				href: "/rss.xml",
 				title: "Updates (RSS)",
 				icon: "mdi:rss",
 			},
@@ -83,15 +83,15 @@ export const footerLinks: LinkGroup[] = [
 		className: "text-xs",
 		links: [
 			{
-				path: "/colophon",
+				href: "/colophon",
 				title: "Colophon",
 			},
 			{
-				path: "https://github.com/garythemann/garymann.org",
+				href: "https://github.com/garythemann/garymann.org",
 				title: "Source",
 			},
 			{
-				path: "/writing#disclaimer",
+				href: "/writing#disclaimer",
 				title: "Disclaimer",
 			},
 		],
