@@ -87,6 +87,10 @@ export const footerLinks: LinkGroup[] = [
 				title: "Colophon",
 			},
 			{
+				path: "https://github.com/garythemann/garymann.org",
+				title: "Source",
+			},
+			{
 				path: "/writing#disclaimer",
 				title: "Disclaimer",
 			},
