@@ -7,69 +7,56 @@ function removeDupsAndLowerCase(array: string[]) {
 
 const baseSchema = z.object({
 	title: z.string().max(90),
+	description: z.string(),
 	className: z.string().optional(),
 });
+
+const basePostSchema = ({ image }) =>
+	baseSchema.extend({
+		coverImage: z
+			.object({
+				alt: z.string(),
+				src: image(),
+			})
+			.optional(),
+		draft: z.boolean().default(false),
+		ogImage: z.string().optional(),
+		tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase),
+		publishDate: z
+			.string()
+			.or(z.date())
+			.transform((val) => new Date(val)),
+		updatedDate: z
+			.string()
+			.optional()
+			.transform((str) => (str ? new Date(str) : undefined)),
+	});
 
 const post = defineCollection({
 	loader: glob({ base: "./src/content/post", pattern: "**/*.{md,mdx}" }),
 	schema: ({ image }) =>
-		baseSchema.extend({
-			description: z.string(),
-			coverImage: z
-				.object({
-					alt: z.string(),
-					src: image(),
-				})
-				.optional(),
-			draft: z.boolean().default(false),
-			ogImage: z.string().optional(),
-			tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase),
-			publishDate: z
-				.string()
-				.or(z.date())
-				.transform((val) => new Date(val)),
-			updatedDate: z
-				.string()
-				.optional()
-				.transform((str) => (str ? new Date(str) : undefined)),
-			// Series
-			seriesId: z.string().optional(), //
-			orderInSeries: z.number().optional(), // :
-			// End
+		basePostSchema({ image }).extend({
+			seriesId: z.string().optional(),
+			orderInSeries: z.number().optional(),
 		}),
 });
 
 const note = defineCollection({
 	loader: glob({ base: "./src/content/note", pattern: "**/*.{md,mdx}" }),
-	schema: baseSchema.extend({
-		description: z.string().optional(),
-		draft: z.boolean().default(false),
-		tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase),
-		publishDate: z
-			.string()
-			.datetime({ offset: true }) // Ensures ISO 8601 format with offsets allowed (e.g. "2024-01-01T00:00:00Z" and "2024-01-01T00:00:00+02:00")
-			.transform((val) => new Date(val)),
-	}),
+	schema: basePostSchema,
 });
 
 const article = defineCollection({
 	loader: glob({ base: "./src/content/article", pattern: "**/*.{md,mdx}" }),
-	schema: baseSchema.extend({
-		description: z.string().optional(),
-	}),
+	schema: baseSchema,
 });
 
-// Series
 const series = defineCollection({
 	loader: glob({ base: "./src/content/series", pattern: "**/*.{md,mdx}" }),
-	schema: z.object({
+	schema: baseSchema.extend({
 		id: z.string(),
-		title: z.string(),
-		description: z.string(),
-		featured: z.boolean().default(false), //
+		featured: z.boolean().default(false),
 	}),
 });
-// End
 
-// Series
 export const collections = { post, note, article, series };
