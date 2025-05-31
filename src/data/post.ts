@@ -1,4 +1,5 @@
 import { type CollectionEntry, getCollection } from "astro:content";
+import type { Post } from "@/types";
 
 /** filter out draft posts based on the environment */
 export async function getAllPosts(): Promise<CollectionEntry<"post">[]> {
@@ -10,8 +11,8 @@ export async function getAllPosts(): Promise<CollectionEntry<"post">[]> {
 /** groups posts by year (based on option siteConfig.sortPostsByUpdatedDate), using the year as the key
  *  Note: This function doesn't filter draft posts, pass it the result of getAllPosts above to do so.
  */
-export function groupPostsByYear(posts: CollectionEntry<"post">[]) {
-	return posts.reduce<Record<string, CollectionEntry<"post">[]>>((acc, post) => {
+export function groupPostsByYear(posts: Post[]) {
+	return posts.reduce<Record<string, Post[]>>((acc, post) => {
 		const year = post.data.publishDate.getFullYear();
 		if (!acc[year]) {
 			acc[year] = [];
@@ -24,21 +25,21 @@ export function groupPostsByYear(posts: CollectionEntry<"post">[]) {
 /** returns all tags created from posts (inc duplicate tags)
  *  Note: This function doesn't filter draft posts, pass it the result of getAllPosts above to do so.
  *  */
-export function getAllTags(posts: CollectionEntry<"post">[]) {
+export function getAllTags(posts: Post[]) {
 	return posts.flatMap((post) => [...post.data.tags]);
 }
 
 /** returns all unique tags created from posts
  *  Note: This function doesn't filter draft posts, pass it the result of getAllPosts above to do so.
  *  */
-export function getUniqueTags(posts: CollectionEntry<"post">[]) {
+export function getUniqueTags(posts: Post[]) {
 	return [...new Set(getAllTags(posts))];
 }
 
 /** returns a count of each unique tag - [[tagName, count], ...]
  *  Note: This function doesn't filter draft posts, pass it the result of getAllPosts above to do so.
  *  */
-export function getUniqueTagsWithCount(posts: CollectionEntry<"post">[]): [string, number][] {
+export function getUniqueTagsWithCount(posts: Post[]): [string, number][] {
 	return [
 		...getAllTags(posts).reduce(
 			(acc, t) => acc.set(t, (acc.get(t) ?? 0) + 1),

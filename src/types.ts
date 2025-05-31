@@ -87,3 +87,10 @@ export interface Badge {
 	showHash?: boolean;
 	title: string;
 }
+
+export interface Post {
+	data: {
+		publishDate: Date;
+		tags: string[];
+	};
+}
