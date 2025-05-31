@@ -1,7 +1,6 @@
 ---
 import FormattedDate from "@/components/FormattedDate.astro";
 import { Icon } from "astro-icon/components";
-import Separator from "../Separator.astro";
 
 interface Props {
 	publishDate: Date;
@@ -30,7 +29,7 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 			class="flex flex-shrink-0"
 		/>
 	</span>
-	<Separator type="dot" />
+	<span class="mx-2">&bull;</span>
 	<span class="flex h-[1.75rem] items-center">
 		<Icon
 			aria-hidden="true"
